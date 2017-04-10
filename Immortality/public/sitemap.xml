@@ -2,39 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>/blog/2015/08/03/first/</loc>
-    <lastmod>2015-08-03T13:39:46+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/blog/2015/08/03/first0/</loc>
-    <lastmod>2015-08-03T13:39:46+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/blog/2015/08/03/first00/</loc>
-    <lastmod>2015-08-03T13:39:46+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/blog/2015/08/03/first01/</loc>
-    <lastmod>2015-08-03T13:39:46+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/blog/2015/06/24/creating-a-new-theme/</loc>
+    <loc>/blog/2015/06/24/series1-programming/</loc>
     <lastmod>2015-06-24T13:50:46+02:00</lastmod>
   </url>
   
   <url>
-    <loc>/categories/all/</loc>
-    <lastmod>2015-08-03T13:39:46+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>/blog/</loc>
-    <lastmod>2015-08-03T13:39:46+02:00</lastmod>
+    <lastmod>2015-06-24T13:50:46+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -52,8 +26,8 @@
   </url>
   
   <url>
-    <loc>/tags/hugo/</loc>
-    <lastmod>2015-08-03T13:39:46+02:00</lastmod>
+    <loc>/categories/fitness/</loc>
+    <lastmod>2015-06-24T13:50:46+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -62,13 +36,7 @@
   </url>
   
   <url>
-    <loc>/categories/pseudo/</loc>
-    <lastmod>2015-08-03T13:39:46+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/categories/starting/</loc>
+    <loc>/</loc>
     <lastmod>2015-06-24T13:50:46+02:00</lastmod>
     <priority>0</priority>
   </url>
@@ -85,8 +53,8 @@
   </url>
   
   <url>
-    <loc>/</loc>
-    <lastmod>2015-08-03T13:39:46+02:00</lastmod>
+    <loc>/categories/weight-loss/</loc>
+    <lastmod>2015-06-24T13:50:46+02:00</lastmod>
     <priority>0</priority>
   </url>
   
