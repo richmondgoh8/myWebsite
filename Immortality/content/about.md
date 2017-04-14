@@ -3,7 +3,7 @@ title = "Portfolio"
 +++
 
 #### Below will showcase a bunch of links that you can clink in order to view some of my works
-
+My Other Website Is available at [My Website](http://rlc4u.com.s3-website-ap-southeast-1.amazonaws.com/)
 ### My Experiences
 <p align="center">
     <img src="/images/myavatar.png" width="150">

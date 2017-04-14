@@ -2,7 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>/blog/2015/06/24/series1-programming/</loc>
+    <loc>/blog/2015/06/24/deploy-blog/</loc>
+    <lastmod>2015-06-24T13:50:46+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/2015/06/24/becoming-younger/</loc>
+    <lastmod>2015-06-24T13:50:46+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/2015/06/24/developer-stack/</loc>
+    <lastmod>2015-06-24T13:50:46+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/2015/06/24/losing-weight/</loc>
     <lastmod>2015-06-24T13:50:46+02:00</lastmod>
   </url>
   
@@ -32,7 +47,19 @@
   </url>
   
   <url>
+    <loc>/categories/hugo/</loc>
+    <lastmod>2015-06-24T13:50:46+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/about/</loc>
+  </url>
+  
+  <url>
+    <loc>/categories/programming/</loc>
+    <lastmod>2015-06-24T13:50:46+02:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>

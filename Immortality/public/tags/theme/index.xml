@@ -10,11 +10,125 @@
     <atom:link href="/tags/theme/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>Simply Said - Weight Loss</title>
-      <link>/blog/2015/06/24/series1-programming/</link>
+      <title>Simply Said - Deploying Hugo On AWS</title>
+      <link>/blog/2015/06/24/deploy-blog/</link>
       <pubDate>Wed, 24 Jun 2015 13:50:46 +0200</pubDate>
       
-      <guid>/blog/2015/06/24/series1-programming/</guid>
+      <guid>/blog/2015/06/24/deploy-blog/</guid>
+      <description>
+
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;Initially, I have been using Web Hosting Hub with wordpress installed with it to run my website. I got my domain name from OpenSRS. I am quite happy with their services and support. However, It has come to the point that I am clearly paying too much for just hosting a blog which stood at about 13 bucks a month.&lt;/p&gt;
+
+&lt;p&gt;This is where I chanced upon Amazon Web Services. Not being a good front-end developer, I went around in search of a template where I found Hugo, a static web builder developed with Golang. Below list the ways i went around trying to switch from web hosting hub to AWS. It was a rather fruitful experience as my overhead became less than 1 dollar a month.&lt;/p&gt;
+
+&lt;p&gt;Feel free to view a step by step tutorial on deploying hugo with Amazon Web Services by &lt;a href=&#34;http://bezdelev.com/post/hugo-aws-lambda-static-website/&#34;&gt;Ilya Bezdelev&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;In a nutshell, key points that you should note involves:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Default AWS Endpoint Domain Name
+
+&lt;ul&gt;
+&lt;li&gt;Storage Buckets (used for containing Hugo files and serving web pages to visitors to site)&lt;/li&gt;
+&lt;li&gt;Lambda ( piece of code that triggers downloading of static files from hugo input to output bucket)&lt;br /&gt;
+&lt;/br&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Custom Domain Name&lt;br /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;CloudFront Distribution (CDN)&lt;/li&gt;
+&lt;li&gt;Route 53
+&lt;/br&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Security of AWS resources will be managed by Identity &amp;amp; Access Management(IAM)&lt;/li&gt;
+&lt;li&gt;AWS CloudFront consist of CDN which helps to speed up your website by&lt;/li&gt;
+&lt;li&gt;Route 53 is used to&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Amazon Route 53 is an authoritative Domain Name System (DNS) service. DNS is the system that translates human-readable domain names (example.com) into IP addresses (192.0.2.0). With authoritative name servers in data centers all over the world, Route 53 is reliable, scalable, and fast.
+TLD = Top Level Domain&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Simply Said - Reducing Your Age</title>
+      <link>/blog/2015/06/24/becoming-younger/</link>
+      <pubDate>Wed, 24 Jun 2015 13:50:46 +0200</pubDate>
+      
+      <guid>/blog/2015/06/24/becoming-younger/</guid>
+      <description>
+
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+
+&lt;p class = &#34;intro&#34;&gt;Reducing Biological Age&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Honey Cinnamon Tea&lt;br /&gt;
+&lt;p align = center&gt;&lt;img src=&#34;/images/cinnamon.jpg&#34; alt=&#34;Cinnamon Tea&#34; /&gt;&lt;/p&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;preparations-include&#34;&gt;Preparations include&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;1 tsp of Honey&lt;/li&gt;
+&lt;li&gt;1 tsp of Ceylon Cinnamon&lt;/li&gt;
+&lt;li&gt;250ml of Hot Water&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Stir well, allow it to rest for 10 minutes and proceed to drink in the morning just after you wake up.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Ginger Lemon Tea
+&lt;p align = center&gt;&lt;img src=&#34;/images/ginger.jpg&#34; alt=&#34;Ginger-Lemon&#34; /&gt;&lt;/p&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;preparations-include-1&#34;&gt;Preparations include&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Simmer Ginger with Water for 30 minutes&lt;/li&gt;
+&lt;li&gt;Add Lemon Slices
+Stir well, simmer for 20 minutes and proceed to drink after
+You can read more about the benefits of honey, the differences between Cassia &amp;amp; Ceylon Cinnamon by clicking on the keywords.&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;All these will help in aiding you by incrasing your metabolism to allow fats to be burn faster and easier. To further increase your weight loss process and helping to keep your body in a better condition, proceed to lift weights/ perform resistance training up to 3 times/ week. Its training only can be done as between 15-45 minutes. Refer to &lt;a href=&#34;http://darebee.com/&#34;&gt;Darebee&lt;/a&gt; for training programmes in which you can follow especially the workout cards.
+&lt;/br&gt;
+&lt;/br&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;disclaimer&#34;&gt;Disclaimer&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Use raw organic honey with no sugars.&lt;/li&gt;
+&lt;li&gt;For every 1 cup of water : (1 Tbsp of Honey, &lt;sup&gt;1&lt;/sup&gt;&amp;frasl;&lt;sub&gt;2&lt;/sub&gt; Tbsp of Ceylon Cinnamon)&lt;/li&gt;
+&lt;li&gt;Keep carbohydrates and sugar intake to a minimum level. &lt;strong&gt;Note: Minimum not None&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Simply Said - Types of Developers</title>
+      <link>/blog/2015/06/24/developer-stack/</link>
+      <pubDate>Wed, 24 Jun 2015 13:50:46 +0200</pubDate>
+      
+      <guid>/blog/2015/06/24/developer-stack/</guid>
+      <description>
+
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;Types of Developers&lt;/p&gt;
+
+&lt;p&gt;There are many types of developers. Hello this is the end of my summary&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Simply Said - Weight Loss</title>
+      <link>/blog/2015/06/24/losing-weight/</link>
+      <pubDate>Wed, 24 Jun 2015 13:50:46 +0200</pubDate>
+      
+      <guid>/blog/2015/06/24/losing-weight/</guid>
       <description>
 
 &lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
@@ -46,7 +160,7 @@
 &lt;li&gt;Simmer Ginger with Water for 30 minutes&lt;/li&gt;
 &lt;li&gt;Add Lemon Slices
 Stir well, simmer for 20 minutes and proceed to drink after
-You can read more about the benefits of honey, the differences between Cassia &amp;amp; Ceylon Cinnamon by clicking on the keywords.&lt;/li&gt;
+You can read more about the benefits of honey, the differences between Cassia &amp;amp; Ceylon Cinnamon by clicking on the keywords.&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 

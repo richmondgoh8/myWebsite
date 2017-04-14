@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Programming on SinLucidious</title>
+    <link>/categories/programming/index.xml</link>
+    <description>Recent content in Programming on SinLucidious</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Copyright (c) 2017 - 2018, rlc4u; all rights reserved.</copyright>
+    <atom:link href="/categories/programming/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Simply Said - Deploying Hugo On AWS</title>
+      <link>/blog/2015/06/24/deploy-blog/</link>
+      <pubDate>Wed, 24 Jun 2015 13:50:46 +0200</pubDate>
+      
+      <guid>/blog/2015/06/24/deploy-blog/</guid>
+      <description>
+
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;Initially, I have been using Web Hosting Hub with wordpress installed with it to run my website. I got my domain name from OpenSRS. I am quite happy with their services and support. However, It has come to the point that I am clearly paying too much for just hosting a blog which stood at about 13 bucks a month.&lt;/p&gt;
+
+&lt;p&gt;This is where I chanced upon Amazon Web Services. Not being a good front-end developer, I went around in search of a template where I found Hugo, a static web builder developed with Golang. Below list the ways i went around trying to switch from web hosting hub to AWS. It was a rather fruitful experience as my overhead became less than 1 dollar a month.&lt;/p&gt;
+
+&lt;p&gt;Feel free to view a step by step tutorial on deploying hugo with Amazon Web Services by &lt;a href=&#34;http://bezdelev.com/post/hugo-aws-lambda-static-website/&#34;&gt;Ilya Bezdelev&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;In a nutshell, key points that you should note involves:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Default AWS Endpoint Domain Name
+
+&lt;ul&gt;
+&lt;li&gt;Storage Buckets (used for containing Hugo files and serving web pages to visitors to site)&lt;/li&gt;
+&lt;li&gt;Lambda ( piece of code that triggers downloading of static files from hugo input to output bucket)&lt;br /&gt;
+&lt;/br&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Custom Domain Name&lt;br /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;CloudFront Distribution (CDN)&lt;/li&gt;
+&lt;li&gt;Route 53
+&lt;/br&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Security of AWS resources will be managed by Identity &amp;amp; Access Management(IAM)&lt;/li&gt;
+&lt;li&gt;AWS CloudFront consist of CDN which helps to speed up your website by&lt;/li&gt;
+&lt;li&gt;Route 53 is used to&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Amazon Route 53 is an authoritative Domain Name System (DNS) service. DNS is the system that translates human-readable domain names (example.com) into IP addresses (192.0.2.0). With authoritative name servers in data centers all over the world, Route 53 is reliable, scalable, and fast.
+TLD = Top Level Domain&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

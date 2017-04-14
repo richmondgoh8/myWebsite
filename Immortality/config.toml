@@ -73,7 +73,7 @@ paginate = 10
     # Format dates with Go's time formatting
     date_format = "January 2, 2006"
 
-    logo = "images/myavatar.png"
+    # logo = "images/myavatar.png"
 
 [Permalinks]
     blog = "/blog/:year/:month/:day/:filename/"
