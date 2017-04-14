@@ -11,3 +11,9 @@ Death is a mystery. It is a scary darkness that is almost impossible to fanthom.
 {{< youtube gWIi6Pytde8 >}}
 
 The question begins as logical thinker, is there a way to cheat death? How can we extend our life way beyond the natural lifespan apart from uploading our conscience into the net or making use of [cryopreservation][1]. One possible way we could do this is by reducing our biological age to ensure that our system is always up and running together with some tissue regeneration.
+
++ High Intensity Interval Training (HIIT) 15mins/day - Strength/Resistance
++ Sleep 7-8 Hours a day
++ Limit Toxins
++ Healthy Mind - Meditation & Yoga
++ Social Connection
