@@ -19,3 +19,4 @@ title = "Portfolio"
 #### Beside all these, I write blogs, participate in hackathons, attend meetups during my spare time. If you would be interested to work with me, feel free to either drop me an email via the [contact form](/contact) or read about some articles that I have written on my [blog](/blog). I have also written game reviews and the analysis of them in-depth which you can view at [Published Papers](http://sp.academia.edu/RichmondGoh).
 </br>
 </br>
+
