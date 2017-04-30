@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Simply Said - Website Crawler</title>
+  <meta name="author" content="" />
+
+  
+  <meta name="keywords" content="Programming, Go, Golang, Web, Crawler, web-crawler, recursive">
+  
+
+  
+  <meta name="description" content="Your Guide to Building a Web Crawler from scratch using Golang">
+  
+
+  <meta name="generator" content="Hugo 0.19" />
+
+  <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,700,800' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="/css/animate.css" rel="stylesheet">
+
+  
+  
+    <link href="/css/style.default.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+
+  
+  <link href="/css/custom.css" rel="stylesheet">
+
+  
+    
+
+  
+  <link rel="shortcut icon" href="/images/logo.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+  
+
+  <link href="/css/owl.carousel.css" rel="stylesheet">
+  <link href="/css/owl.theme.css" rel="stylesheet">
+
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="SinLucidious">
+
+  
+  <meta property="og:title" content="Simply Said - Website Crawler" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/post/webcrawler//" />
+  <meta property="og:image" content="" />
+
+</head>
+
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="/">
+                    <img src="/images/logo.png" alt="Simply Said - Website Crawler logo" class="hidden-xs hidden-sm">
+                    <img src="/images/logo.png" alt="Simply Said - Website Crawler logo" class="visible-xs visible-sm">
+                    <span class="sr-only">Simply Said - Website Crawler - go to homepage</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">Toggle Navigation</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/">Home</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/about">Portfolio</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/">Blog</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/faq/">FAQ</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/contact/">Contact</a>
+                    
+                  </li>
+                  
+                </ul>
+            </div>
+            
+
+            <div class="collapse clearfix" id="search">
+
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+
+                </span>
+                    </div>
+                </form>
+
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Simply Said - Website Crawler</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+
+                        <p class="text-muted text-uppercase mb-small text-right">April 21, 2017</p>
+
+                        <div id="post-content">
+                          <p>Today, we are going to explore building a web scraper to mark a milestone in our progression towards learning GO. This exercise will be emphasizing on the skills that you should already be familiar with. It will cover skills such as:</p>
+
+<p><em>Scenario</em> - Crawl a page and deeper into the relative urls and ensure that there are no dead links in any of your website.</p>
+
+<p><strong>Sneak Preview</strong>
+<img src="/images/snippet.png" class="img-responsive center-block" /></p>
+
+<pre><code>go run crawl_less.go http://example.com
+</code></pre>
+
+<ul>
+<li>Usage of reading a command line argument</li>
+<li>Scanning a webpage for links</li>
+<li>Going a level deeper and scanning for more links</li>
+</ul>
+
+<pre><code>//crawl.go
+func main() {
+	flag.Parse()
+
+	args := flag.Args()
+	fmt.Println(args)
+	if len(args) &lt; 1 {
+		fmt.Println(&quot;Please specify start page&quot;)
+		os.Exit(1)
+	}
+}
+</code></pre>
+
+<p>In the current main file, this will be the code that will be responsbile for taking in command arguments and checking to ensure that there is 1 url in the argument after running</p>
+
+<pre><code>go run crawl.go http://rlc4u.com
+</code></pre>
+
+<p>Now, to spice things up further, we create a function called retrieve which will proceed to collect the full html elements of the indicated link and print it out.</p>
+
+<pre><code>func retrieve(uri string) {
+
+	resp, err := http.Get(uri)
+	if err != nil {
+		panic(err)
+	}
+	defer resp.Body.Close()
+
+	body, _ := ioutil.ReadAll(resp.Body)
+	fmt.Println(string(body))
+	}
+}
+</code></pre>
+
+<p>We will now try to get the terminal to print that all links in the page which include relative links</p>
+
+<pre><code>links := collectlinks.All(resp.Body) // Here we use the collectlinks package
+for _, link := range links {
+  fmt.Println(link) // an iterator in many other languages get all links including relative
+}
+</code></pre>
+
+<p>These statements will proceed to run a number of iterations based on the numbers of links that the library has collected for us which includes relative link.</p>
+
+<p>Now that we have figured out what exactly, resp.body contains, we no longer need to see them anymore. The idea behind the next step would consist of extracting all elements containing the tag &ldquo;a href&rdquo;. This time, we will be using a library of <a href="https://github.com/jackdanger/collectlinks">Jack Danger</a> that will do those extractions for us.</p>
+
+<p>Currently, we have a bunch of urls with no base url. We will now try to convert all relative urls to an absolute url.</p>
+
+<pre><code>func retrieve(uri string) {
+...
+    ...
+	for _, link := range links {
+		absolute := fixUrl(link, uri)
+		fmt.Println(absolute)
+	}
+}
+
+func fixUrl(href, base string) string {
+	uri, err := url.Parse(href)
+	if err != nil {
+		return &quot;&quot;
+	}
+	baseUrl, err := url.Parse(base)
+	if err != nil {
+		return &quot;&quot;
+	}
+	uri = baseUrl.ResolveReference(uri)
+	return uri.String()
+}
+</code></pre>
+
+<p>Now, once we print our urls, we will see thats all our paths that was relative is now converted to absolute urls</p>
+
+<p>Going deeper, we want to ensure that the links to want to crawl deeper are accessible and we proceed to add in the following code.</p>
+
+<pre><code>// retrieve.go
+...
+  ...
+for _, link := range links {
+  //fmt.Println(link) // an iterator in many other languages get all links including relative
+  absolute := fixUrl(link, uri)
+  //fmt.Println(absolute)
+  resp, _ := http.Get(absolute)
+
+  switch resp.StatusCode {
+  case 200:
+    fmt.Println(&quot;[Up] \t\t&quot;, absolute)
+  default:
+    fmt.Println(&quot;[Down] \t\t&quot;, absolute)
+  }
+}
+</code></pre>
+
+<p>We make use of maps in order to prevent the crawler from digging deeper into the same url which would prevent an endless loop. A Sample of what it looks like is:</p>
+
+<pre><code>visitedPage   = make(map[string]bool)
+
+if strings.Contains(absolute, baseURL) &amp;&amp; !visitedPage[absolute] {
+			checkWebStatus(absolute, uri)
+		}
+</code></pre>
+
+<p>We proceed to upgrade our retrieve.go in such a way that we throw the url into a queue and allows our crawler to go digging into the urls that it has found The method we are using is recursive.</p>
+
+<pre><code>//replacement of retrieve.go
+func enqueue(uri string) {
+	//fmt.Println(&quot;fetching&quot;, uri)
+	visitedPage[uri] = true
+	resp, err := http.Get(uri)
+	if err != nil {
+		return
+	}
+	defer resp.Body.Close()
+	links := collectlinks.All(resp.Body)
+	for _, link := range links {
+		absolute := fixUrl(link, uri)
+		if !strings.Contains(absolute, baseURL) &amp;&amp; !visitedLinks[absolute] {
+			visitedLinks[absolute] = true
+			checkWebStatus(absolute, uri)
+		}
+		if strings.Contains(absolute, baseURL) &amp;&amp; !visitedPage[absolute] {
+			UrlCrawlCount++
+			//fmt.Println(absolute)
+			checkWebStatus(absolute, uri)
+			enqueue(absolute)
+		}
+	}
+}
+</code></pre>
+
+<p>If you read the code, you will realize that we have applied the same theory to links so as to prevent checking the web status of the same link twice. With that, you have completed a fully-functional web crawler that is capable of digging into your website ensuring that the links in them are kept up to date.</p>
+
+<pre><code>package main
+
+//Recurisve Web Crawling
+import (
+	&quot;flag&quot;
+	&quot;fmt&quot;
+	&quot;github.com/briandowns/spinner&quot;
+	&quot;github.com/jackdanger/collectlinks&quot;
+	&quot;net/http&quot;
+	&quot;net/url&quot;
+	&quot;os&quot;
+	&quot;strings&quot;
+	&quot;time&quot;
+)
+
+var (
+	visitedPage   = make(map[string]bool)
+	visitedLinks  = make(map[string]bool)
+	BrokenPage    = make(map[string]string)
+	UrlCrawlCount = 0
+	Linkcount     = 0
+	brokenLinks   = 0
+	baseURL       = &quot;&quot;
+)
+
+func main() {
+	flag.Parse()
+	args := flag.Args()
+	//fmt.Println(args)
+	if len(args) &lt; 1 {
+		fmt.Println(&quot;Please specify start page&quot;)
+		os.Exit(1)
+	}
+	baseURL = args[0]
+
+	s := spinner.New(spinner.CharSets[9], 100*time.Millisecond)
+	s.Prefix = fmt.Sprintf(&quot;crawling %s, please wait &quot;, baseURL)
+	s.Start()
+	enqueue(baseURL)
+
+	tmpCount := 0
+	s.Stop()
+	fmt.Println(&quot;================================================================================================&quot;)
+	fmt.Println(&quot;================================================================================================&quot;)
+	fmt.Println(&quot;Broken Links:&quot;, brokenLinks, &quot;Ok Links:&quot;, Linkcount, &quot;Web Pages Crawled:&quot;, UrlCrawlCount)
+	for key, value := range BrokenPage {
+		tmpCount++
+		fmt.Println(fmt.Sprintf(&quot;[%v] \n broken  : %s \n source: %s&quot;, tmpCount, key, value))
+	}
+}
+
+// fixUrl converts all relative links to absolute links
+func fixUrl(href, base string) string {
+	uri, err := url.Parse(href)
+	if err != nil {
+		return &quot;&quot;
+	}
+	baseUrl, err := url.Parse(base)
+	if err != nil {
+		return &quot;&quot;
+	}
+	uri = baseUrl.ResolveReference(uri)
+	return uri.String()
+}
+
+func enqueue(uri string) {
+	//fmt.Println(&quot;fetching&quot;, uri)
+	visitedPage[uri] = true
+	resp, err := http.Get(uri)
+	if err != nil {
+		return
+	}
+	defer resp.Body.Close()
+	links := collectlinks.All(resp.Body)
+	for _, link := range links {
+		absolute := fixUrl(link, uri)
+		if !strings.Contains(absolute, baseURL) &amp;&amp; !visitedLinks[absolute] {
+			visitedLinks[absolute] = true
+			checkWebStatus(absolute, uri)
+		}
+		if strings.Contains(absolute, baseURL) &amp;&amp; !visitedPage[absolute] {
+			UrlCrawlCount++
+			//fmt.Println(absolute)
+			checkWebStatus(absolute, uri)
+			enqueue(absolute)
+		}
+	}
+}
+
+// checkWebStatus checks all given links if they are invalid
+func checkWebStatus(urlParams string, baseline string) {
+	resp, _ := http.Get(urlParams)
+	if resp != nil &amp;&amp; resp.StatusCode == 200 {
+		Linkcount++
+	} else {
+		brokenLinks++
+		BrokenPage[urlParams] = baseline
+	}
+}
+</code></pre>
+
+<p>Get the full source code from <a href="https://github.com/richmondgoh8/web-crawler">My Github Repo</a>.</p>
+                        </div>
+                        
+                        
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        
+
+
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="/categories/fitness">fitness (2)</a>
+            </li>
+            
+            <li><a href="/categories/programming">programming (4)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        <footer id="footer">
+    <div class="container">
+
+        
+
+        <div class="col-md-4 col-sm-6">
+
+             
+            <h4>Recent posts</h4>
+
+            <div class="blog-entries">
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/post/webcrawler/">
+                          
+                            <img src="/images/web-crawler.png" class="img-responsive" alt="">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/post/webcrawler/">Simply Said - Website Crawler</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/post/china-deployment/">
+                          
+                            <img src="/images/aliyun-logo.png" class="img-responsive" alt="">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/post/china-deployment/">Simply Said - China Infrastructure Deployment</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="image same-height-always">
+                        <a href="/post/becoming-younger/">
+                          
+                            <img src="/images/reverse_aging.jpg" class="img-responsive" alt="">
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="/post/becoming-younger/">Simply Said - Reducing Your Age</a></h5>
+                    </div>
+                </div>
+                
+            </div>
+
+            <hr class="hidden-md hidden-lg">
+             
+
+        </div>
+        
+
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright (c) 2017 - 2018, rlc4u; all rights reserved.</p>
+            
+            <p class="pull-right">
+              Template by <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+
+              Ported to Hugo by <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-52410912-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+<script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+
+<script src="//maps.googleapis.com/maps/api/js?v=3.exp"></script>
+
+<script src="/js/hpneo.gmaps.js"></script>
+<script src="/js/gmaps.init.js"></script>
+<script src="/js/front.js"></script>
+
+
+<script src="/js/owl.carousel.min.js"></script>
+
+
+  </body>
+</html>
