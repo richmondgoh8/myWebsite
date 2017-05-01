@@ -4,7 +4,7 @@ title = "Portfolio"
 
 #### Below will showcase a bunch of links that you can clink in order to view some of my works
 
-### My Experiences
+### My Experience
 <p align="center">
     <img src="/images/myavatar.png" width="150">
 </p>  
@@ -16,7 +16,7 @@ title = "Portfolio"
 </br>
 #### During my spare time, I have tinkered with Corona SDK using Lua Language to build 2 IOS mobile applications namely "Catch The Beat 2" and "Lost Sense". Catch The Beat 2 revolves arounds the player trying to prevent music from dying in the virtual world. It seeks to test the player's reaction skills. A demo of the game can be found in [IOS App - Catch The Beat 2](https://itunes.apple.com/sg/app/catch-the-beat-2/id1023323140?mt=8). You can also download Lost Sense at [IOS App - Lost Sense](https://itunes.apple.com/sg/app/lost-sense/id995634840?mt=8) which simply makes use of the weather api to inform the user of the weather in Singapore and allow them to plan their schedule accordingly to catch either the sunrise or sunset!
 </br>
-#### Beside all these, I write blogs, participate in hackathons, attend meetups during my spare time. If you would be interested to work with me, feel free to either drop me an email via the [contact form](/contact) or read about some articles that I have written on my [blog](/blog). I have also written game reviews and the analysis of them in-depth which you can view at [Published Papers](http://sp.academia.edu/RichmondGoh)
+#### Beside all these, I write blogs, participate in hackathons, attend meetups during my spare time. If you would be interested to work with me, feel free to either drop me an email via the [contact form](/contact) or read about some articles that I have written on my [blog](/blog). I have also written game reviews and the analysis of them in-depth which you can view at [Published Papers](http://sp.academia.edu/RichmondGoh).
 </br>
 </br>
 
