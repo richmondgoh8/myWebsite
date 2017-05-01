@@ -2,7 +2,7 @@
 title = "Portfolio"
 +++
 
-#### Below will showcase a bunch of links that you can clink in order to view some of my works
+#### Below will showcase a bunch of links that you can click in order to view some of my works
 
 ### My Experience
 <p align="center">
