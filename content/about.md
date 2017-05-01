@@ -4,13 +4,13 @@ title = "Portfolio"
 
 #### Below will showcase a bunch of links that you can click in order to view some of my works
 
-### My Experience
+### My Experiences
 <p align="center">
     <img src="/images/myavatar.png" width="150">
 </p>  
 #### I have tinkered about with hugo, OpenVPN(Digital Ocean), Aliyun, AWS, Endpoint Creation, GRPC Clients, Server Programming, Netlify, ArangoDB NOSQL database, NSQ (Message Queue), ArangoDrivers, Gitlab, Twilio, Mailgun, Wordpress CMS, Email Templating. In my blog, I will categorizing information between "Simply Said Series" and in-depth explanation.</p>
 </br>
-#### In my experience with unity 3d, I have developed a story based structure in which anyone can use to develop a story for their games. It includes an template which anyone can grab and use it as a system. Feel free to grab the source code from my [Github Repo](https://github.com/richmondgoh8/AStoryAdventure). You can also proceed to view a short story developed using my system via the itch.io. You can view my game at [Unity Story Adventure](https://richmondgoh8.itch.io/the-great-escape).
+#### In my experience with Unity 3d, I have developed a story based structure in which anyone can use to develop a story for their games. It includes an template which anyone can grab and use it as a system. Feel free to grab the source code from my [Github Repo](https://github.com/richmondgoh8/AStoryAdventure). You can also proceed to view a short story developed using my system via the itch.io. You can view my game at [Unity Story Adventure](https://richmondgoh8.itch.io/the-great-escape).
 </br>
 #### I have also created 2 games with my team using Zero Engine and they are namely swirl; a movement recording based game and demonice; a game where the player will try to balance his life on a very thin life. Feel free to view the source code at [ZeroEngine - Demonice & Swirl](https://github.com/richmondgoh8/Swirl_Zero_Demonice) or download the .exe file at [Google Drive](https://drive.google.com/drive/folders/0BzffX1_lPaINZFJJTS0tNzM1UTQ)
 </br>
