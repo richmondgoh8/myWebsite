@@ -45,7 +45,7 @@ paginate = 10
     author = "SinLucidious"
     defaultKeywords = ["SinLucidious", "hugo", "go", "Richmond Goh","Richmond","Goh","rlc4u"]
     defaultDescription = "Website which aims to provide people with an easier path to becoming a full-stack developer"
-
+    
     # Google Maps API key (if not set will default to not passing a key.)
     # googleMapsApiKey = ""
 
