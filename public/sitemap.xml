@@ -2,6 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>/post/hugoci/</loc>
+    <lastmod>2017-05-05T13:50:46+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/devops/</loc>
+    <lastmod>2017-04-28T13:50:46+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/post/webcrawler/</loc>
     <lastmod>2017-04-21T13:50:46+02:00</lastmod>
   </url>
@@ -33,7 +43,7 @@
   
   <url>
     <loc>/blog/</loc>
-    <lastmod>2017-04-21T13:50:46+02:00</lastmod>
+    <lastmod>2017-05-05T13:50:46+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -62,13 +72,13 @@
   
   <url>
     <loc>/categories/programming/</loc>
-    <lastmod>2017-04-21T13:50:46+02:00</lastmod>
+    <lastmod>2017-05-05T13:50:46+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/</loc>
-    <lastmod>2017-04-21T13:50:46+02:00</lastmod>
+    <lastmod>2017-05-05T13:50:46+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -79,7 +89,7 @@
   
   <url>
     <loc>/tags/theme/</loc>
-    <lastmod>2017-04-21T13:50:46+02:00</lastmod>
+    <lastmod>2017-05-05T13:50:46+02:00</lastmod>
     <priority>0</priority>
   </url>
   

@@ -7,15 +7,15 @@
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Simply Said - China Infrastructure Deployment</title>
+  <title>Simply Said - Hugo CI</title>
   <meta name="author" content="" />
 
   
-  <meta name="keywords" content="Deploy, Infrastructure, China, Aliyun, CS, Terminal, Docker, Docker-Compose, Services">
+  <meta name="keywords" content="Programming, Go, Hugo, Website, Blog">
   
 
   
-  <meta name="description" content="Your Guide to Losing Weight Permanently">
+  <meta name="description" content="Your Guide to Building a Web Crawler from scratch using Golang">
   
 
   <meta name="generator" content="Hugo 0.19" />
@@ -52,9 +52,9 @@
   <link rel="alternate" href="/index.xml" type="application/rss+xml" title="SinLucidious">
 
   
-  <meta property="og:title" content="Simply Said - China Infrastructure Deployment" />
+  <meta property="og:title" content="Simply Said - Hugo CI" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="/post/china-deployment//" />
+  <meta property="og:url" content="/post/hugoci//" />
   <meta property="og:image" content="" />
 
 </head>
@@ -73,9 +73,9 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="/">
-                    <img src="/images/logo.png" alt="Simply Said - China Infrastructure Deployment logo" class="hidden-xs hidden-sm">
-                    <img src="/images/logo.png" alt="Simply Said - China Infrastructure Deployment logo" class="visible-xs visible-sm">
-                    <span class="sr-only">Simply Said - China Infrastructure Deployment - go to homepage</span>
+                    <img src="/images/logo.png" alt="Simply Said - Hugo CI logo" class="hidden-xs hidden-sm">
+                    <img src="/images/logo.png" alt="Simply Said - Hugo CI logo" class="visible-xs visible-sm">
+                    <span class="sr-only">Simply Said - Hugo CI - go to homepage</span>
                 </a>
                 <div class="navbar-buttons">
                     <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
@@ -154,7 +154,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Simply Said - China Infrastructure Deployment</h1>
+                <h1>Simply Said - Hugo CI</h1>
             </div>
         </div>
     </div>
@@ -170,60 +170,58 @@
 
                     <div class="col-md-9" id="blog-post">
 
-                        <p class="text-muted text-uppercase mb-small text-right">April 14, 2017</p>
+                        <p class="text-muted text-uppercase mb-small text-right">May 5, 2017</p>
 
                         <div id="post-content">
-                          <p>In this blog, we will be exploring the way of deploying the current service infrasture that you have built locally to deploying it on a server in china via Alibaba Cloud aka Aliyun.</p>
+                          
 
-<p><em>Before starting on this tutorial, the following should be done:</em></p>
+<h2 id="sneak-preview">Sneak Preview</h2>
 
-<ol>
-<li>Services Created and running locally.</li>
-<li>Ensure DockerFile have been build.</li>
-<li>Understanding of <a href="https://docs.docker.com/engine/getstarted/step_four/">Docker</a> &amp; <a href="https://hub.docker.com/_/haproxy/">HAProxy</a></li>
-</ol>
+<p>Today&rsquo;s Topic will be all about Continuous Integration for <a href="https://gohugo.io/">Hugo</a> Deployment! Click on the link to find out more but in a nutshell, it is a pretty neat tool for hosting a static website! The thing is that now that you are done creating your website with Hugo tool in localhost. You are ready to let it run public for the whole wide world to know! After browsing tutorials after tutorials and scanning through providers, i realized that hosting providers are definitely not the way to go and to keep cost low, I have decided to use Amazon S3 Storage.</p>
 
-<p><em>Successful Implementation</em></p>
+<h1 id="manual-labor-sucks">Manual Labor Sucks!</h1>
 
-<ol>
-<li>Register an account with both Aliyun CN and INTL Account</li>
-<li>Login into the CN account &amp; Create an <a href="https://m.aliyun.com/yunqi/articles/9102">Image WareHouse</a></li>
-<li>At this point, you should have successful push the built docker image to aliyun registry store.</li>
-<li>Now, we proceed to Creating an ECS Instance (2 core, 8GB Ram, Ubuntu 16.0.4)</li>
-<li>After creating an instance, you will be given an Internet Address of that Instance.</li>
-<li>Proceed to SSH (or Putty for Windows) into the virtual machine.</li>
-<li>Install <a href="https://docs.docker.com/engine/getstarted/step_one/">Docker</a> &amp; <a href="https://docs.docker.com/compose/install/">Docker Compose</a> in the ECS Machine</li>
-<li>Create a <a href="https://docs.docker.com/compose/compose-file/compose-file-v2/#dependson">docker-compose.yml</a> file in a directory in the Ubuntu Machine</li>
-<li>Ensure that HAProxy is the first image you build. You can check the statistics after building the image via http://”Internet IP”/stats/haproxy</li>
-<li>Run<code>Docker-Compose Up</code> and ensure that services are connected and working.</li>
-<li>Enjoy</li>
-</ol>
+<p>Essentially, If you do it manually, what you would do is create a bucket in S3 with the name &ldquo;example.com&rdquo;. Followed by which you would proceed to run the command</p>
 
-<p><em>FAQ</em></p>
+<pre><code>// Generate Public Folder
+hugo
+</code></pre>
 
-<p><em>Why do we have both an intl and cn aliyun account?</em></p>
+<p>You would then place the public folder into the bucket, if you enable static website hosting under the properties tab of the bucket, it will now provide you an endpoint for you to use to access to your website! This is all good unless you realize that you have to constantly log into the amazon cloud console and run the hugo command, empty the bucket and place the files all over again.</p>
 
-<ul>
-<li>Currently the intl account do not have the the registry image warehouse and is only available in the cn aliyun account. The reason why we do not do everything in the cn aliyun account is because it requires a &ldquo;real-name&rdquo; authentication that we currently do not possess and is unable to do.</li>
-</ul>
+<p>Follow this optional <a href="http://bezdelev.com/post/hugo-aws-lambda-static-website/">tutorial</a> to get a domain name to be integrated with your bucket. Note that you need not follow the part where it requires the lambda functions. You would only need example.com as the storage for the public content and www.example.com as a redirect to example.com.</p>
 
-<p><em>Why do we not use container service?</em></p>
+<p>What we want now is to use a tool called <a href="https://github.com/s3tools/s3cmd">s3cmd</a> which seeks to helps us to configure our command line to <a href="https://kramerc.com/2013/10/23/deploying-to-s3-upon-git-push/">sync content</a> across from our local repository to our s3 bucket.</p>
 
-<ul>
-<li>Facing difficulties with Container Services linking multi containers services. Creating a custom image from the services provided in the international account could not pull from the registry properly. Orchestration templates formats in building the multi containers link file have to be in Aliyun’s format context.</li>
-</ul>
+<pre><code>#!/bin/bash
+#
+# Deploy to s3 when master gets updated.
+#
+# This expects (and does NOT check for) s3cmd to be installed and configured!
+# This expects (and does NOT check for) hugo to be installed and on your $PATH
 
-<p><em>Why did we have to set up OpenVPN through Digital Ocean?</em></p>
+bucket='example.com'
+prefix=''
 
-<ul>
-<li>Accessing Aliyun Cloud Website from Singapore would redirect us to the Internal Version of the website which did not provide us with the features we require. Proxy would not work as it does not enable scripting.</li>
-</ul>
+branch=$(git rev-parse --abbrev-ref HEAD)
 
-<p><em>Why didn’t we use third party registry such as docker hub?</em></p>
+if [[ &quot;$branch&quot; == &quot;master&quot; ]]; then
+  hugo
+  echo &quot;Syncing public/* with s3://$bucket/$prefix.&quot;
+  s3cmd --acl-public --delete-removed --no-progress sync public/* s3://$bucket/$prefix
+  echo -e &quot;\nUpdated s3://$bucket/$prefix.&quot;
+else
+  echo &quot;*** s3://$bucket/$prefix only syncs when master branch is updated! ***&quot;
+fi
 
-<ul>
-<li>The main reason behind not using third-party registry is that they are costly. Another reason is that we will never know when the china’s firewall will block connection from external sources. Integration with third party registry might not be as optimised. Moreover, ensuring all registries have to be in ‘private’ mode.</li>
-</ul>
+exit 0
+</code></pre>
+
+<p></br>
+Above is a sample post-commit code from git which helps to sync content to s3 bucket which is trigger by git push. Thats all folks and you have a updated website just by running the commands!
+git add.
+git commit -m &ldquo;First Commit&rdquo;</p>
+
                         </div>
                         
                         

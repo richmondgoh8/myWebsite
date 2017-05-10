@@ -24,11 +24,11 @@ So far, I have worked with Corona SDK, Unity 3D, Titanium, Zero Engine, Wordpres
 
 ### 4. HOW DO YOU SEEK TO ATTAIN IMMORTALITY/ PROLONGED LIFE?
 
-I believed that we are judged not by our real age but by our biological age. Having a biological age of 50 but a real age of 25 will still hamper you from living a long life. In my blog, I will procced to share my journey to reducing my biological age, balancing your weight issues and having an active lifestyle. The tips shared with you will be doable with a hectic lifestyle.
+I believed that we are judged not by our real age, but by our biological age. Having a biological age of 50 but a real age of 25 will still hamper you from living a long life. In my blog, I will proceed to share my journey to reducing my biological age, balancing your weight issues and having an active lifestyle. The tips shared with you will be doable with a hectic lifestyle.
 
 ### 5. HOW ARE YOUR CONTENT MANAGED
 
-I will categories the content available in my blog with a #something in the title, you can search for the relevant subjects via the search function which is "ctrl f"
+I will categorize the content available in my blog with a #something in the title, you can search for the relevant subjects via the search function which is "ctrl f"
 
 ---
 

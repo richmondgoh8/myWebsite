@@ -7,8 +7,337 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright (c) 2017 - 2018, rlc4u; all rights reserved.</copyright>
-    <lastBuildDate>Fri, 21 Apr 2017 13:50:46 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 05 May 2017 13:50:46 +0200</lastBuildDate>
     <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Simply Said - Hugo CI</title>
+      <link>/post/hugoci/</link>
+      <pubDate>Fri, 05 May 2017 13:50:46 +0200</pubDate>
+      
+      <guid>/post/hugoci/</guid>
+      <description>
+
+&lt;h2 id=&#34;sneak-preview&#34;&gt;Sneak Preview&lt;/h2&gt;
+
+&lt;p&gt;Today&amp;rsquo;s Topic will be all about Continuous Integration for &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt; Deployment! Click on the link to find out more but in a nutshell, it is a pretty neat tool for hosting a static website! The thing is that now that you are done creating your website with Hugo tool in localhost. You are ready to let it run public for the whole wide world to know! After browsing tutorials after tutorials and scanning through providers, i realized that hosting providers are definitely not the way to go and to keep cost low, I have decided to use Amazon S3 Storage.&lt;/p&gt;
+
+&lt;h1 id=&#34;manual-labor-sucks&#34;&gt;Manual Labor Sucks!&lt;/h1&gt;
+
+&lt;p&gt;Essentially, If you do it manually, what you would do is create a bucket in S3 with the name &amp;ldquo;example.com&amp;rdquo;. Followed by which you would proceed to run the command&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// Generate Public Folder
+hugo
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You would then place the public folder into the bucket, if you enable static website hosting under the properties tab of the bucket, it will now provide you an endpoint for you to use to access to your website! This is all good unless you realize that you have to constantly log into the amazon cloud console and run the hugo command, empty the bucket and place the files all over again.&lt;/p&gt;
+
+&lt;p&gt;Follow this optional &lt;a href=&#34;http://bezdelev.com/post/hugo-aws-lambda-static-website/&#34;&gt;tutorial&lt;/a&gt; to get a domain name to be integrated with your bucket. Note that you need not follow the part where it requires the lambda functions. You would only need example.com as the storage for the public content and www.example.com as a redirect to example.com.&lt;/p&gt;
+
+&lt;p&gt;What we want now is to use a tool called &lt;a href=&#34;https://github.com/s3tools/s3cmd&#34;&gt;s3cmd&lt;/a&gt; which seeks to helps us to configure our command line to &lt;a href=&#34;https://kramerc.com/2013/10/23/deploying-to-s3-upon-git-push/&#34;&gt;sync content&lt;/a&gt; across from our local repository to our s3 bucket.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#!/bin/bash
+#
+# Deploy to s3 when master gets updated.
+#
+# This expects (and does NOT check for) s3cmd to be installed and configured!
+# This expects (and does NOT check for) hugo to be installed and on your $PATH
+
+bucket=&#39;example.com&#39;
+prefix=&#39;&#39;
+
+branch=$(git rev-parse --abbrev-ref HEAD)
+
+if [[ &amp;quot;$branch&amp;quot; == &amp;quot;master&amp;quot; ]]; then
+  hugo
+  echo &amp;quot;Syncing public/* with s3://$bucket/$prefix.&amp;quot;
+  s3cmd --acl-public --delete-removed --no-progress sync public/* s3://$bucket/$prefix
+  echo -e &amp;quot;\nUpdated s3://$bucket/$prefix.&amp;quot;
+else
+  echo &amp;quot;*** s3://$bucket/$prefix only syncs when master branch is updated! ***&amp;quot;
+fi
+
+exit 0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;/br&gt;
+Above is a sample post-commit code from git which helps to sync content to s3 bucket which is trigger by git push. Thats all folks and you have a updated website just by running the commands!
+git add.
+git commit -m &amp;ldquo;First Commit&amp;rdquo;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Simply Said - DevOps</title>
+      <link>/post/devops/</link>
+      <pubDate>Fri, 28 Apr 2017 13:50:46 +0200</pubDate>
+      
+      <guid>/post/devops/</guid>
+      <description>
+
+&lt;h1 id=&#34;behold-automation-at-it-s-finest&#34;&gt;Behold Automation at it&amp;rsquo;s Finest&lt;/h1&gt;
+
+&lt;p&gt;Today&amp;rsquo;s Topic will be all about Continous Integration! Let&amp;rsquo;s Imagine this scenario, right now you are done with creating an awesome service that is capable of crawling the whole wide web or doing an e-commerce store. The problem now is that, you have to generate your own api blueprints (documentation), you have to manually deploy it to the cloud, make use of kubenetes settings. What is there was a way to automate all this these. By simply pushing to the Repository, all those manual labor will be done for you behind the scenes!&lt;/p&gt;
+
+&lt;p&gt;(Pst, we will also be using &lt;a href=&#34;https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/&#34;&gt;kubernetes&lt;/a&gt; for automate deployment!)&lt;/p&gt;
+
+&lt;h2 id=&#34;laying-the-ground-work&#34;&gt;Laying the Ground-Work&lt;/h2&gt;
+
+&lt;p&gt;Of course, laying the ground work is no menial task. Before we begin, lets lay some &amp;ldquo;rules&amp;rdquo;. The rules are that you should have already built a minimum of one service and is not bias(negative light) against google cloud platform services.&lt;/p&gt;
+
+&lt;p&gt;Process is as follows:
+Local Repository &amp;ndash;&amp;gt; Google Cloud Repository(Private) &amp;ndash;&amp;gt; Build Triggers(Cloudbuild.yaml)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// # Sample Cloudbuild.yaml
+steps:
+- name: &#39;gcr.io/cloud-builders/go&#39;
+  args: [&#39;install&#39;, &#39;.&#39;]
+  env:  [&#39;PROJECT_ROOT=$REPO_NAME&#39;]
+
+- name: &#39;gcr.io/cloud-zen/kube-doc:latest&#39;
+  args: [&#39;go&#39;, &#39;run&#39;, &#39;main.go&#39;]
+  env: [&#39;REPO_NAME=$REPO_NAME&#39;]
+
+- name: &#39;gcr.io/cloud-builders/docker&#39;
+  args: [&#39;build&#39;, &#39;-t&#39;, &#39;gcr.io/$PROJECT_ID/$REPO_NAME:$REVISION_ID&#39;, &#39;.&#39;]
+
+- name: &#39;gcr.io/cloud-zen/kube-deploy:latest&#39;
+  args: [&#39;set&#39;,&#39;image&#39;,&#39;deployments/$REPO_NAME&#39;, &#39;$REPO_NAME=gcr.io/$PROJECT_ID/$REPO_NAME:$REVISION_ID&#39;]
+
+images:
+  - &#39;gcr.io/$PROJECT_ID/$REPO_NAME:$REVISION_ID&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Before pushing to the Google Cloud Repository, we first set up a trigger to look out for a file named Cloudbuild.yaml.&lt;br /&gt;
+&lt;/br&gt;
+&lt;img src=&#34;/images/cloudbuild-trigger.png&#34; class=&#34;img-responsive center-block&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Inside the cloudbuild.yaml sample as we have shown above, it will execute a set of instructions and only upon successful execution will it be a successful build. In this sample, the service that we have built is based on go. We will first make use of the built-in docker image by cloudbuilder to run the commands:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;go install
+go test ./... (optional)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Followed by which, it will start to build the docker image based on the tags given to it and sends it to the Google Cloud Registry (GCR). The final command to execute would be to pull in a custom docker image that we have built to set the kubenetes system.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# Sample  Kube-Deploy Dockerfile
+FROM ubuntu:16.04
+
+ENV CLOUDSDK_PYTHON &amp;quot;/usr/bin/python2.7&amp;quot;
+ENV PATH /root/google-cloud-sdk/bin:$PATH
+ENV CLOUDSDK_PYTHON_SITEPACKAGES 1
+
+# Install dependencies
+RUN apt-get update &amp;amp;&amp;amp; apt-get install -y curl &amp;amp;&amp;amp; apt-get install -y python2.7
+
+# Install gcloud
+RUN curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+RUN apt-get update
+RUN curl https://sdk.cloud.google.com | bash
+
+# Authenticate gcloud
+COPY /configs/gcloud /root/.config/gcloud
+RUN ls -a /root/.config/gcloud
+
+# Install kubectl
+RUN /root/google-cloud-sdk/bin/gcloud components install kubectl
+
+# Set and config cluster
+RUN gcloud config set container/cluster cloudzen
+RUN gcloud container clusters get-credentials cloudzen
+
+# RUN gcloud auth application-default login
+RUN gcloud container clusters describe cloudzen --zone asia-east1-a
+RUN gcloud container clusters list --zone asia-east1-a
+
+# Updating the cluster
+RUN gcloud container get-server-config --zone=asia-east1-a
+RUN gcloud container clusters get-credentials cloudzen --zone asia-east1-a
+
+ENTRYPOINT [&amp;quot;kubectl&amp;quot;]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;What kube-deploy does is that it installs python, gcloud and kubectl on an ubuntu base image with gcloud authenticated. This allows others services to pull this image to run the kubectl command to set the image in the pod(replica set). With that, you have successful built a integration that helps you build and pull docker images and at the set time set your image for proxy purposes and your services is updated with 0 downtime and without any manual labor (apart from running git push to Google Cloud Repository)&lt;/p&gt;
+
+&lt;h1 id=&#34;appendix&#34;&gt;Appendix&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;# Sample haproxy.cfg - for kubernetes
+global
+   log 127.0.0.1 local0
+   daemon
+#   maxconn 4000
+#   debug
+
+defaults
+   log global
+   mode http
+
+   option http-server-close
+
+   timeout connect 5s
+   timeout client 30s
+   timeout client-fin 30s
+   timeout server 20s
+   timeout tunnel 1h
+
+   stats enable
+   stats refresh 5s
+   stats show-node
+   stats uri  /stats/haproxy
+
+frontend www
+    bind *:80
+
+    acl is_kube_aglio path_beg /doc
+    use_backend kube-aglio-http if is_kube_aglio
+
+    default_backend nomatch
+
+backend nomatch
+    errorfile 503 /usr/local/etc/haproxy/errors/404.http
+
+backend kube-aglio-http
+    balance roundrobin
+    server api1 kube-aglio.default:80 check
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;/br&gt;&lt;br /&gt;
+Ever developer knows that documentation is the key to everything and one of a nice tool that I&amp;rsquo;ve chanced upon is &lt;a href=&#34;https://apiblueprint.org/&#34;&gt;API Blueprints&lt;/a&gt;. in our current repository, we will have to have a .apib file which contains our documentation is .apib language. We would need some form of way to render it to html. One such tool we can make use of is &lt;a href=&#34;https://github.com/danielgtaylor/aglio&#34;&gt;aglio&lt;/a&gt; which helps us generate themes to come along with our html. All these works well but it comes with a price, what happens when we forget to run the command and push it to the cloud repository, also another problem is that anyone who wants to look at the documentation would have to clone the repository and that is not something that we want. So in the following steps, we would be building a function in go that would take care of passing the .apib in the repository into a google storage bucket.&lt;br /&gt;
+&lt;/br&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// Sample Kube-Doc Custom
+func main() {
+	bucketName   := &amp;quot;api-doc-build&amp;quot;
+	repoName     := os.Getenv(&amp;quot;REPO_NAME&amp;quot;)
+	APIBfilePath := os.Getenv(&amp;quot;APIB_FILE_PATH&amp;quot;)
+	ctx          := context.Background()
+
+	//Starts the client
+	client, err := storage.NewClient(ctx)
+	if err != nil {
+		log.WithError(err).Fatal(&amp;quot;Authentication Error!&amp;quot;)
+	}
+
+	if repoName == &amp;quot;&amp;quot; {
+		log.Fatal(&amp;quot;&#39;REPO_NAME&#39; is required&amp;quot;)
+	}
+	object := fmt.Sprintf(&amp;quot;%s/doc.apib&amp;quot;, repoName)
+
+	doc, err := os.Open(APIBfilePath)
+	if err != nil {
+		log.Fatal(&amp;quot;APIB File does not exist&amp;quot;)
+	}
+	defer doc.Close()
+
+	wc := client.Bucket(bucketName).Object(object).NewWriter(ctx)
+	if _, err := io.Copy(wc, doc); err != nil {
+		log.WithError(err).Fatal(&amp;quot;Error Copying File&amp;quot;)
+	}
+	if err := wc.Close(); err != nil {
+		log.WithError(err).Fatal(&amp;quot;Error Closing Client&amp;quot;)
+	}
+	// Close the client when finished.
+	if err := client.Close(); err != nil {
+		log.WithError(err).Fatal(&amp;quot;Error Closing Client&amp;quot;)
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you build a docker image with this custom go script, what it does is that it will throw the .apib file in the repository that is pulling the image into a bucket. The question now is that we would want to create a custom server that is capable of allowing the developers to use our api without needing to clone our repository or having to use the aglio command manually.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// Sample Dockerfile for Running Node Server
+FROM node:boron
+
+# Create app directory
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
+# Install app dependencies
+COPY package.json /usr/src/app/
+RUN npm install
+
+# Bundle app source
+COPY . /usr/src/app
+
+EXPOSE 8080
+CMD [ &amp;quot;npm&amp;quot;, &amp;quot;start&amp;quot; ]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;// Sample Index.js
+&#39;use strict&#39;;
+const express = require(&#39;express&#39;);
+const aglio = require(&#39;aglio&#39;);
+const gcs = require(&#39;@google-cloud/storage&#39;)({
+    projectId: &#39;$projectID&#39;
+});
+const bucket = gcs.bucket(process.env.GCS_BUCKET || &#39;api-doc-build&#39;);
+
+// Configure express app
+const app = express();
+app.set(&#39;views&#39;, __dirname + &#39;/views&#39;);
+app.engine(&#39;html&#39;, require(&#39;ejs&#39;).renderFile);
+
+app.get(&#39;/doc&#39;, (req, res) =&amp;gt; {
+    return bucket.getFiles((err, files) =&amp;gt; {
+        if (err !== null) {
+            // files is an array of File objects.
+            console.log(err);
+            return res.status(500).send({error: &#39;error getting files&#39;});
+        }
+
+        res.render(&#39;index.html&#39;, {
+            docs: files.map((file) =&amp;gt; {
+                return file.id.split(&amp;quot;%&amp;quot;)[0];
+            })
+        });
+    });
+});
+
+app.get(&#39;/doc/:repo&#39;, (req, res) =&amp;gt; {
+    let fileData = new Buffer(&#39;&#39;);
+    const repo = req.param(&amp;quot;repo&amp;quot;);
+    const remoteFile = bucket.file(`${repo}/${process.env.APIB_FILE_NAME || &#39;doc.apib&#39;}`);
+
+    // Validate
+    if (repo === &amp;quot;&amp;quot;) {
+        return res.status(400).send({error: `Invalid repo name`});
+    }
+
+    // Download file from GCS bucket
+    return remoteFile.createReadStream()
+        .on(&#39;error&#39;, function(err) {
+            console.log(&#39;Error:&#39;, err);
+            return res.status(404).send({error: &#39;404 File not found&#39;});
+        })
+        .on(&#39;data&#39;, function(chunk) {
+            fileData = Buffer.concat([fileData, chunk]);
+        })
+        .on(&#39;end&#39;, function() {
+            // The file is fully downloaded.
+            fileData = fileData.toString();
+            if (fileData === undefined || fileData === &amp;quot;&amp;quot;) {
+                return res.status(500).send({error: `${process.env.APIB_FILE_NAME} document can not be empty`});
+            }
+
+            return aglio.render(fileData, {
+                themeVariables: process.env.THEME || &#39;default&#39;
+            }, (err, html) =&amp;gt; {
+                if (err !== null) {
+                    return res.status(500).send({error: err});
+                }
+                return res.send(html);
+            });
+        });
+});
+
+app.listen(process.env.HTTP_PORT || 8080);
+console.log(`Running on :${process.env.HTTP_PORT || 8080}`);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;/br&gt;
+This script above downloads the .apib file from the GCS bucket and later renders it on a &lt;a href=&#34;https://expressjs.com/&#34;&gt;node express server&lt;/a&gt;. With that, you have just been through the basic fundamentals of continous integration!&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Simply Said - Website Crawler</title>
@@ -45,7 +374,7 @@ func main() {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;In the current main file, this will be the code that will be responsbile for taking in command arguments and checking to ensure that there is 1 url in the argument after running&lt;/p&gt;
+&lt;p&gt;In the current main file, this will be the code that will be responsible for taking in command arguments and checking to ensure that there is 1 url in the argument after running&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;go run crawl.go http://rlc4u.com
 &lt;/code&gt;&lt;/pre&gt;
@@ -363,7 +692,7 @@ The question begins as logical thinker, is there a way to cheat death? How can w
 &lt;li&gt;Social Connection&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Always remember that to live a long life is to lead a life with a healthy mind and body. You can begin to see results in 2 weeks just by removing toxins from your body and building a healthly mind through mediation exercises. HIIT exercises with a restful sleep will work hand in hand to making you feel more positive in life and feeling younger, easing up the things that you were incapable of doing efficiently as before.&lt;/p&gt;</description>
+&lt;p&gt;Always remember that to live a long life is to lead a life with a healthy mind and body. You can begin to see results in 2 weeks just by removing toxins from your body and building a healthy mind through mediation exercises. HIIT exercises with a restful sleep will work hand in hand to making you feel more positive in life and feeling younger, easing up the things that you were incapable of doing efficiently as before.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -449,9 +778,9 @@ TLD = Top Level Domain&lt;/p&gt;
       <guid>/post/losing-weight/</guid>
       <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
 
-&lt;p&gt;Losing weight can be painful, may seem impossible, counting calories can it exhausting. Been there, done that, backfired and crashed at. I proceeded to explore betters ways to lose weight, below includes some of the measures that I have found to work to effectively lose weight without losing your life and sense of self.&lt;/p&gt;
+&lt;p&gt;Losing weight can be painfu and may seem impossible for some others. Even something as simple as counting calories can be exhausting. Been there, done that, backfired and ruined. I proceeded to explore betters ways to lose weight, below includes some of the measures that I have chanced upon that helps you to lose weight without losing your life and sense of self.&lt;/p&gt;
 
-&lt;p&gt;Losing weight does not neccessarily means it is about going on a diet that causes you immense emotional pain. To help increase your metabolism, you can seek to use 2 types of method, either by drinking honey cinnamon water or a ginger lemon tea.&lt;/p&gt;
+&lt;p&gt;Losing weight does not mean that it is about going on a diet that causes you immense emotional pain. To help increase your metabolism, you can use 2 types of method, either by drinking honey cinnamon water or a ginger lemon tea.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;/images/cinnamon.jpg&#34; class=&#34;img-responsive center-block&#34; /&gt;&lt;/p&gt;
 
@@ -476,7 +805,7 @@ Stir well, simmer for 20 minutes and proceed to drink after
 You can read more about the benefits of honey, the differences between Cassia &amp;amp; Ceylon Cinnamon by clicking on the keywords.&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;All these will help in aiding you by incrasing your metabolism to allow fats to be burn faster and easier. To further increase your weight loss process and helping to keep your body in a better condition, proceed to lift weights/ perform resistance training up to 3 times/ week. Its training only can be done as between 15-45 minutes. Refer to &lt;a href=&#34;http://darebee.com/&#34;&gt;Darebee&lt;/a&gt; for training programmes in which you can follow especially the workout cards.
+&lt;p&gt;All these will aid you in increasing your metabolism to allow fats to be burn faster and easier. To further increase your weight loss process and helping to keep your body in a better condition, proceed to lift weights/ perform resistance training up to 3 times/ week. Training should only can be done as between 15-45 minutes. Refer to &lt;a href=&#34;http://darebee.com/&#34;&gt;Darebee&lt;/a&gt; for training programmes in which you can follow especially the workout cards.
 &lt;/br&gt;
 &lt;/br&gt;&lt;/p&gt;
 
@@ -525,7 +854,7 @@ Generically speaking, there are many different types of programmers. Each with d
 
 &lt;h4 id=&#34;back-end-developer&#34;&gt;Back-End Developer?&lt;/h4&gt;
 
-&lt;p&gt;&amp;ldquo;Back End&amp;rdquo; typically refers to the stuff that happens behind-the-scene. They are more focused on connecting the website request to the correct services which would include ensuring that the right data are passing through the browswer, connecting services to databases, implementing infrasture and mapping the ports of the services. They ensure that all the buttons and data collected are moving as intended.&lt;/p&gt;</description>
+&lt;p&gt;&amp;ldquo;Back End&amp;rdquo; typically refers to the stuff that happens behind-the-scene. They are more focused on connecting the website request to the correct services which would include ensuring that the right data are passing through the browser, connecting services to databases, implementing infrastructure and mapping the ports of the services. They ensure that all the buttons and data collected are moving as intended.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -540,7 +869,9 @@ Generically speaking, there are many different types of programmers. Each with d
 
 &lt;p&gt;Feel free to message me should you be interested to work with me or require my assistance based on any of the skills that I possess. I am always looking to share business ideas and value with one another. Do not hesitate to message me should you wish to know anything more about me.&lt;/p&gt;
 
-&lt;p&gt;You can also choose to contact me at my mobile number at 9273 2203 (SG).&lt;/p&gt;
+&lt;p&gt;You can also choose to contact me at my mobile number at 9273 2203 (SG).&lt;br /&gt;
+&lt;/br&gt;
+&lt;em&gt;On a side note - If you are in Singapore and living in the east and happen to be looking for a tennis sparring partner, feel free to contact me as well!&lt;/em&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -574,11 +905,11 @@ Generically speaking, there are many different types of programmers. Each with d
 
 &lt;h3 id=&#34;4-how-do-you-seek-to-attain-immortality-prolonged-life&#34;&gt;4. HOW DO YOU SEEK TO ATTAIN IMMORTALITY/ PROLONGED LIFE?&lt;/h3&gt;
 
-&lt;p&gt;I believed that we are judged not by our real age but by our biological age. Having a biological age of 50 but a real age of 25 will still hamper you from living a long life. In my blog, I will procced to share my journey to reducing my biological age, balancing your weight issues and having an active lifestyle. The tips shared with you will be doable with a hectic lifestyle.&lt;/p&gt;
+&lt;p&gt;I believed that we are judged not by our real age, but by our biological age. Having a biological age of 50 but a real age of 25 will still hamper you from living a long life. In my blog, I will proceed to share my journey to reducing my biological age, balancing your weight issues and having an active lifestyle. The tips shared with you will be doable with a hectic lifestyle.&lt;/p&gt;
 
 &lt;h3 id=&#34;5-how-are-your-content-managed&#34;&gt;5. HOW ARE YOUR CONTENT MANAGED&lt;/h3&gt;
 
-&lt;p&gt;I will categories the content available in my blog with a #something in the title, you can search for the relevant subjects via the search function which is &amp;ldquo;ctrl f&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;I will categorize the content available in my blog with a #something in the title, you can search for the relevant subjects via the search function which is &amp;ldquo;ctrl f&amp;rdquo;&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -604,11 +935,11 @@ Generically speaking, there are many different types of programmers. Each with d
     &lt;img src=&#34;/images/myavatar.png&#34; width=&#34;150&#34;&gt;
 &lt;/p&gt;&lt;/p&gt;
 
-&lt;h4 id=&#34;i-have-tinkered-about-with-hugo-openvpn-digital-ocean-aliyun-aws-endpoint-creation-grpc-clients-server-programming-netlify-arangodb-nosql-database-nsq-message-queue-arangodrivers-gitlab-twilio-mailgun-wordpress-cms-email-templating-in-my-blog-i-will-categorizing-information-between-simply-said-series-and-in-depth-explanation-p&#34;&gt;I have tinkered about with hugo, OpenVPN(Digital Ocean), Aliyun, AWS, Endpoint Creation, GRPC Clients, Server Programming, Netlify, ArangoDB NOSQL database, NSQ (Message Queue), ArangoDrivers, Gitlab, Twilio, Mailgun, Wordpress CMS, Email Templating. In my blog, I will categorizing information between &amp;ldquo;Simply Said Series&amp;rdquo; and in-depth explanation.&lt;/p&gt;&lt;/h4&gt;
+&lt;h4 id=&#34;i-have-tinkered-about-with-hugo-openvpn-digital-ocean-aliyun-aws-endpoint-creation-grpc-clients-server-programming-netlify-arangodb-nosql-database-nsq-message-queue-arangodrivers-gitlab-twilio-mailgun-wordpress-cms-email-templating-in-my-blog-i-will-be-categorizing-information-between-simply-said-series-and-in-depth-explanation-p&#34;&gt;I have tinkered about with Hugo, OpenVPN (Digital Ocean), Aliyun, AWS, Endpoint Creation, GRPC Clients, Server Programming, Netlify, ArangoDB NOSQL database, NSQ (Message Queue), ArangoDrivers, Gitlab, Twilio, Mailgun, Wordpress CMS, Email Templating. In my blog, I will be categorizing information between &amp;ldquo;Simply Said Series&amp;rdquo; and in-depth explanation.&lt;/p&gt;&lt;/h4&gt;
 
 &lt;p&gt;&lt;/br&gt;&lt;/p&gt;
 
-&lt;h4 id=&#34;in-my-experience-with-unity-3d-i-have-developed-a-story-based-structure-in-which-anyone-can-use-to-develop-a-story-for-their-games-it-includes-an-template-which-anyone-can-grab-and-use-it-as-a-system-feel-free-to-grab-the-source-code-from-my-github-repo-https-github-com-richmondgoh8-astoryadventure-you-can-also-proceed-to-view-a-short-story-developed-using-my-system-via-the-itch-io-you-can-view-my-game-at-unity-story-adventure-https-richmondgoh8-itch-io-the-great-escape&#34;&gt;In my experience with Unity 3d, I have developed a story based structure in which anyone can use to develop a story for their games. It includes an template which anyone can grab and use it as a system. Feel free to grab the source code from my &lt;a href=&#34;https://github.com/richmondgoh8/AStoryAdventure&#34;&gt;Github Repo&lt;/a&gt;. You can also proceed to view a short story developed using my system via the itch.io. You can view my game at &lt;a href=&#34;https://richmondgoh8.itch.io/the-great-escape&#34;&gt;Unity Story Adventure&lt;/a&gt;.&lt;/h4&gt;
+&lt;h4 id=&#34;in-my-experience-with-unity-3d-i-have-developed-a-story-based-structure-in-which-anyone-can-use-to-develop-a-story-for-their-games-it-includes-a-template-which-anyone-can-grab-and-use-it-as-a-system-feel-free-to-grab-the-source-code-from-my-github-repo-https-github-com-richmondgoh8-astoryadventure-you-can-also-proceed-to-view-a-short-story-developed-using-my-system-via-the-itch-io-you-can-view-my-game-at-unity-story-adventure-https-richmondgoh8-itch-io-the-great-escape&#34;&gt;In my experience with Unity 3d, I have developed a story based structure in which anyone can use to develop a story for their games. It includes a template which anyone can grab and use it as a system. Feel free to grab the source code from my &lt;a href=&#34;https://github.com/richmondgoh8/AStoryAdventure&#34;&gt;Github Repo&lt;/a&gt;. You can also proceed to view a short story developed using my system via the itch.io. You can view my game at &lt;a href=&#34;https://richmondgoh8.itch.io/the-great-escape&#34;&gt;Unity Story Adventure&lt;/a&gt;.&lt;/h4&gt;
 
 &lt;p&gt;&lt;/br&gt;&lt;/p&gt;
 
@@ -616,11 +947,11 @@ Generically speaking, there are many different types of programmers. Each with d
 
 &lt;p&gt;&lt;/br&gt;&lt;/p&gt;
 
-&lt;h4 id=&#34;during-my-spare-time-i-have-tinkered-with-corona-sdk-using-lua-language-to-build-2-ios-mobile-applications-namely-catch-the-beat-2-and-lost-sense-catch-the-beat-2-revolves-arounds-the-player-trying-to-prevent-music-from-dying-in-the-virtual-world-it-seeks-to-test-the-player-s-reaction-skills-a-demo-of-the-game-can-be-found-in-ios-app-catch-the-beat-2-https-itunes-apple-com-sg-app-catch-the-beat-2-id1023323140-mt-8-you-can-also-download-lost-sense-at-ios-app-lost-sense-https-itunes-apple-com-sg-app-lost-sense-id995634840-mt-8-which-simply-makes-use-of-the-weather-api-to-inform-the-user-of-the-weather-in-singapore-and-allow-them-to-plan-their-schedule-accordingly-to-catch-either-the-sunrise-or-sunset&#34;&gt;During my spare time, I have tinkered with Corona SDK using Lua Language to build 2 IOS mobile applications namely &amp;ldquo;Catch The Beat 2&amp;rdquo; and &amp;ldquo;Lost Sense&amp;rdquo;. Catch The Beat 2 revolves arounds the player trying to prevent music from dying in the virtual world. It seeks to test the player&amp;rsquo;s reaction skills. A demo of the game can be found in &lt;a href=&#34;https://itunes.apple.com/sg/app/catch-the-beat-2/id1023323140?mt=8&#34;&gt;IOS App - Catch The Beat 2&lt;/a&gt;. You can also download Lost Sense at &lt;a href=&#34;https://itunes.apple.com/sg/app/lost-sense/id995634840?mt=8&#34;&gt;IOS App - Lost Sense&lt;/a&gt; which simply makes use of the weather api to inform the user of the weather in Singapore and allow them to plan their schedule accordingly to catch either the sunrise or sunset!&lt;/h4&gt;
+&lt;h4 id=&#34;during-my-spare-time-i-have-tinkered-with-corona-sdk-using-lua-language-to-build-2-ios-mobile-applications-namely-catch-the-beat-2-and-lost-sense-catch-the-beat-2-revolves-around-the-player-trying-to-prevent-music-from-dying-in-the-virtual-world-it-seeks-to-test-the-player-s-reaction-skills-a-demo-of-the-game-can-be-found-in-ios-app-catch-the-beat-2-https-itunes-apple-com-sg-app-catch-the-beat-2-id1023323140-mt-8-you-can-also-download-lost-sense-at-ios-app-lost-sense-https-itunes-apple-com-sg-app-lost-sense-id995634840-mt-8-which-simply-makes-use-of-the-weather-api-to-inform-the-user-of-the-weather-in-singapore-and-allow-them-to-plan-their-schedule-accordingly-to-catch-either-the-sunrise-or-sunset&#34;&gt;During my spare time, I have tinkered with Corona SDK using Lua Language to build 2 IOS mobile applications namely &amp;ldquo;Catch The Beat 2&amp;rdquo; and &amp;ldquo;Lost Sense&amp;rdquo;. Catch The Beat 2 revolves around the player trying to prevent music from dying in the virtual world. It seeks to test the player&amp;rsquo;s reaction skills. A demo of the game can be found in &lt;a href=&#34;https://itunes.apple.com/sg/app/catch-the-beat-2/id1023323140?mt=8&#34;&gt;IOS App - Catch The Beat 2&lt;/a&gt;. You can also download Lost Sense at &lt;a href=&#34;https://itunes.apple.com/sg/app/lost-sense/id995634840?mt=8&#34;&gt;IOS App - Lost Sense&lt;/a&gt; which simply makes use of the weather api to inform the user of the weather in Singapore and allow them to plan their schedule accordingly to catch either the sunrise or sunset!&lt;/h4&gt;
 
 &lt;p&gt;&lt;/br&gt;&lt;/p&gt;
 
-&lt;h4 id=&#34;beside-all-these-i-write-blogs-participate-in-hackathons-attend-meetups-during-my-spare-time-if-you-would-be-interested-to-work-with-me-feel-free-to-either-drop-me-an-email-via-the-contact-form-contact-or-read-about-some-articles-that-i-have-written-on-my-blog-blog-i-have-also-written-game-reviews-and-the-analysis-of-them-in-depth-which-you-can-view-at-published-papers-http-sp-academia-edu-richmondgoh&#34;&gt;Beside all these, I write blogs, participate in hackathons, attend meetups during my spare time. If you would be interested to work with me, feel free to either drop me an email via the &lt;a href=&#34;/contact&#34;&gt;contact form&lt;/a&gt; or read about some articles that I have written on my &lt;a href=&#34;/blog&#34;&gt;blog&lt;/a&gt;. I have also written game reviews and the analysis of them in-depth which you can view at &lt;a href=&#34;http://sp.academia.edu/RichmondGoh&#34;&gt;Published Papers&lt;/a&gt;.&lt;/h4&gt;
+&lt;h4 id=&#34;beside-all-these-i-write-blogs-participate-in-hackathons-attend-meetups-during-my-spare-time-if-you-would-be-interested-to-work-with-me-feel-free-to-either-drop-me-an-email-via-the-contact-form-contact-or-read-about-some-articles-that-i-have-written-on-my-blog-blog-i-have-also-written-game-reviews-and-the-analysis-of-them-in-depth-which-you-can-view-at-published-papers-http-sp-academia-edu-richmondgoh&#34;&gt;Beside all these, I write blogs, participate in hackathons, attend Meetups during my spare time. If you would be interested to work with me, feel free to either drop me an email via the &lt;a href=&#34;/contact&#34;&gt;contact form&lt;/a&gt; or read about some articles that I have written on my &lt;a href=&#34;/blog&#34;&gt;blog&lt;/a&gt;. I have also written game reviews and the analysis of them in-depth which you can view at &lt;a href=&#34;http://sp.academia.edu/RichmondGoh&#34;&gt;Published Papers&lt;/a&gt;.&lt;/h4&gt;
 
 &lt;p&gt;&lt;/br&gt;
 &lt;/br&gt;&lt;/p&gt;
