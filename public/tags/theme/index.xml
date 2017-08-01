@@ -6,15 +6,15 @@
     <description>Recent content in Theme on SinLucidious</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>Copyright (c) 2017 - 2018, rlc4u; all rights reserved.</copyright>
+    <copyright>Richmond Goh</copyright>
     <atom:link href="/tags/theme/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>Simply Said - Hugo CI</title>
-      <link>/post/hugoci/</link>
+      <title>Hugo CI</title>
+      <link>/2017/05/05/hugoci/</link>
       <pubDate>Fri, 05 May 2017 13:50:46 +0200</pubDate>
       
-      <guid>/post/hugoci/</guid>
+      <guid>/2017/05/05/hugoci/</guid>
       <description>
 
 &lt;h2 id=&#34;sneak-preview&#34;&gt;Sneak Preview&lt;/h2&gt;
@@ -67,11 +67,11 @@ git commit -m &amp;ldquo;First Commit&amp;rdquo;&lt;/p&gt;
     </item>
     
     <item>
-      <title>Simply Said - DevOps</title>
-      <link>/post/devops/</link>
+      <title>DevOps</title>
+      <link>/2017/04/28/devops/</link>
       <pubDate>Fri, 28 Apr 2017 13:50:46 +0200</pubDate>
       
-      <guid>/post/devops/</guid>
+      <guid>/2017/04/28/devops/</guid>
       <description>
 
 &lt;h1 id=&#34;behold-automation-at-it-s-finest&#34;&gt;Behold Automation at it&amp;rsquo;s Finest&lt;/h1&gt;
@@ -339,269 +339,11 @@ This script above downloads the .apib file from the GCS bucket and later renders
     </item>
     
     <item>
-      <title>Simply Said - Website Crawler</title>
-      <link>/post/webcrawler/</link>
-      <pubDate>Fri, 21 Apr 2017 13:50:46 +0200</pubDate>
-      
-      <guid>/post/webcrawler/</guid>
-      <description>&lt;p&gt;Today, we are going to explore building a web scraper to mark a milestone in our progression towards learning GO. This exercise will be emphasizing on the skills that you should already be familiar with. It will cover skills such as:&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Scenario&lt;/em&gt; - Crawl a page and deeper into the relative urls and ensure that there are no dead links in any of your website.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Sneak Preview&lt;/strong&gt;
-&lt;img src=&#34;/images/snippet.png&#34; class=&#34;img-responsive center-block&#34; /&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;go run crawl_less.go http://example.com
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Usage of reading a command line argument&lt;/li&gt;
-&lt;li&gt;Scanning a webpage for links&lt;/li&gt;
-&lt;li&gt;Going a level deeper and scanning for more links&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;//crawl.go
-func main() {
-	flag.Parse()
-
-	args := flag.Args()
-	fmt.Println(args)
-	if len(args) &amp;lt; 1 {
-		fmt.Println(&amp;quot;Please specify start page&amp;quot;)
-		os.Exit(1)
-	}
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;In the current main file, this will be the code that will be responsible for taking in command arguments and checking to ensure that there is 1 url in the argument after running&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;go run crawl.go http://rlc4u.com
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now, to spice things up further, we create a function called retrieve which will proceed to collect the full html elements of the indicated link and print it out.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;func retrieve(uri string) {
-
-	resp, err := http.Get(uri)
-	if err != nil {
-		panic(err)
-	}
-	defer resp.Body.Close()
-
-	body, _ := ioutil.ReadAll(resp.Body)
-	fmt.Println(string(body))
-	}
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;We will now try to get the terminal to print that all links in the page which include relative links&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;links := collectlinks.All(resp.Body) // Here we use the collectlinks package
-for _, link := range links {
-  fmt.Println(link) // an iterator in many other languages get all links including relative
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;These statements will proceed to run a number of iterations based on the numbers of links that the library has collected for us which includes relative link.&lt;/p&gt;
-
-&lt;p&gt;Now that we have figured out what exactly, resp.body contains, we no longer need to see them anymore. The idea behind the next step would consist of extracting all elements containing the tag &amp;ldquo;a href&amp;rdquo;. This time, we will be using a library of &lt;a href=&#34;https://github.com/jackdanger/collectlinks&#34;&gt;Jack Danger&lt;/a&gt; that will do those extractions for us.&lt;/p&gt;
-
-&lt;p&gt;Currently, we have a bunch of urls with no base url. We will now try to convert all relative urls to an absolute url.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;func retrieve(uri string) {
-...
-    ...
-	for _, link := range links {
-		absolute := fixUrl(link, uri)
-		fmt.Println(absolute)
-	}
-}
-
-func fixUrl(href, base string) string {
-	uri, err := url.Parse(href)
-	if err != nil {
-		return &amp;quot;&amp;quot;
-	}
-	baseUrl, err := url.Parse(base)
-	if err != nil {
-		return &amp;quot;&amp;quot;
-	}
-	uri = baseUrl.ResolveReference(uri)
-	return uri.String()
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now, once we print our urls, we will see thats all our paths that was relative is now converted to absolute urls&lt;/p&gt;
-
-&lt;p&gt;Going deeper, we want to ensure that the links to want to crawl deeper are accessible and we proceed to add in the following code.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;// retrieve.go
-...
-  ...
-for _, link := range links {
-  //fmt.Println(link) // an iterator in many other languages get all links including relative
-  absolute := fixUrl(link, uri)
-  //fmt.Println(absolute)
-  resp, _ := http.Get(absolute)
-
-  switch resp.StatusCode {
-  case 200:
-    fmt.Println(&amp;quot;[Up] \t\t&amp;quot;, absolute)
-  default:
-    fmt.Println(&amp;quot;[Down] \t\t&amp;quot;, absolute)
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;We make use of maps in order to prevent the crawler from digging deeper into the same url which would prevent an endless loop. A Sample of what it looks like is:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;visitedPage   = make(map[string]bool)
-
-if strings.Contains(absolute, baseURL) &amp;amp;&amp;amp; !visitedPage[absolute] {
-			checkWebStatus(absolute, uri)
-		}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;We proceed to upgrade our retrieve.go in such a way that we throw the url into a queue and allows our crawler to go digging into the urls that it has found The method we are using is recursive.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;//replacement of retrieve.go
-func enqueue(uri string) {
-	//fmt.Println(&amp;quot;fetching&amp;quot;, uri)
-	visitedPage[uri] = true
-	resp, err := http.Get(uri)
-	if err != nil {
-		return
-	}
-	defer resp.Body.Close()
-	links := collectlinks.All(resp.Body)
-	for _, link := range links {
-		absolute := fixUrl(link, uri)
-		if !strings.Contains(absolute, baseURL) &amp;amp;&amp;amp; !visitedLinks[absolute] {
-			visitedLinks[absolute] = true
-			checkWebStatus(absolute, uri)
-		}
-		if strings.Contains(absolute, baseURL) &amp;amp;&amp;amp; !visitedPage[absolute] {
-			UrlCrawlCount++
-			//fmt.Println(absolute)
-			checkWebStatus(absolute, uri)
-			enqueue(absolute)
-		}
-	}
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;If you read the code, you will realize that we have applied the same theory to links so as to prevent checking the web status of the same link twice. With that, you have completed a fully-functional web crawler that is capable of digging into your website ensuring that the links in them are kept up to date.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;package main
-
-//Recurisve Web Crawling
-import (
-	&amp;quot;flag&amp;quot;
-	&amp;quot;fmt&amp;quot;
-	&amp;quot;github.com/briandowns/spinner&amp;quot;
-	&amp;quot;github.com/jackdanger/collectlinks&amp;quot;
-	&amp;quot;net/http&amp;quot;
-	&amp;quot;net/url&amp;quot;
-	&amp;quot;os&amp;quot;
-	&amp;quot;strings&amp;quot;
-	&amp;quot;time&amp;quot;
-)
-
-var (
-	visitedPage   = make(map[string]bool)
-	visitedLinks  = make(map[string]bool)
-	BrokenPage    = make(map[string]string)
-	UrlCrawlCount = 0
-	Linkcount     = 0
-	brokenLinks   = 0
-	baseURL       = &amp;quot;&amp;quot;
-)
-
-func main() {
-	flag.Parse()
-	args := flag.Args()
-	//fmt.Println(args)
-	if len(args) &amp;lt; 1 {
-		fmt.Println(&amp;quot;Please specify start page&amp;quot;)
-		os.Exit(1)
-	}
-	baseURL = args[0]
-
-	s := spinner.New(spinner.CharSets[9], 100*time.Millisecond)
-	s.Prefix = fmt.Sprintf(&amp;quot;crawling %s, please wait &amp;quot;, baseURL)
-	s.Start()
-	enqueue(baseURL)
-
-	tmpCount := 0
-	s.Stop()
-	fmt.Println(&amp;quot;================================================================================================&amp;quot;)
-	fmt.Println(&amp;quot;================================================================================================&amp;quot;)
-	fmt.Println(&amp;quot;Broken Links:&amp;quot;, brokenLinks, &amp;quot;Ok Links:&amp;quot;, Linkcount, &amp;quot;Web Pages Crawled:&amp;quot;, UrlCrawlCount)
-	for key, value := range BrokenPage {
-		tmpCount++
-		fmt.Println(fmt.Sprintf(&amp;quot;[%v] \n broken  : %s \n source: %s&amp;quot;, tmpCount, key, value))
-	}
-}
-
-// fixUrl converts all relative links to absolute links
-func fixUrl(href, base string) string {
-	uri, err := url.Parse(href)
-	if err != nil {
-		return &amp;quot;&amp;quot;
-	}
-	baseUrl, err := url.Parse(base)
-	if err != nil {
-		return &amp;quot;&amp;quot;
-	}
-	uri = baseUrl.ResolveReference(uri)
-	return uri.String()
-}
-
-func enqueue(uri string) {
-	//fmt.Println(&amp;quot;fetching&amp;quot;, uri)
-	visitedPage[uri] = true
-	resp, err := http.Get(uri)
-	if err != nil {
-		return
-	}
-	defer resp.Body.Close()
-	links := collectlinks.All(resp.Body)
-	for _, link := range links {
-		absolute := fixUrl(link, uri)
-		if !strings.Contains(absolute, baseURL) &amp;amp;&amp;amp; !visitedLinks[absolute] {
-			visitedLinks[absolute] = true
-			checkWebStatus(absolute, uri)
-		}
-		if strings.Contains(absolute, baseURL) &amp;amp;&amp;amp; !visitedPage[absolute] {
-			UrlCrawlCount++
-			//fmt.Println(absolute)
-			checkWebStatus(absolute, uri)
-			enqueue(absolute)
-		}
-	}
-}
-
-// checkWebStatus checks all given links if they are invalid
-func checkWebStatus(urlParams string, baseline string) {
-	resp, _ := http.Get(urlParams)
-	if resp != nil &amp;amp;&amp;amp; resp.StatusCode == 200 {
-		Linkcount++
-	} else {
-		brokenLinks++
-		BrokenPage[urlParams] = baseline
-	}
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Get the full source code from &lt;a href=&#34;https://github.com/richmondgoh8/web-crawler&#34;&gt;My Github Repo&lt;/a&gt;.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Simply Said - China Infrastructure Deployment</title>
-      <link>/post/china-deployment/</link>
+      <title>China Infrastructure Deployment</title>
+      <link>/2017/04/14/china-deployment/</link>
       <pubDate>Fri, 14 Apr 2017 13:50:46 +0200</pubDate>
       
-      <guid>/post/china-deployment/</guid>
+      <guid>/2017/04/14/china-deployment/</guid>
       <description>&lt;p&gt;In this blog, we will be exploring the way of deploying the current service infrasture that you have built locally to deploying it on a server in china via Alibaba Cloud aka Aliyun.&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;Before starting on this tutorial, the following should be done:&lt;/em&gt;&lt;/p&gt;
@@ -656,50 +398,11 @@ func checkWebStatus(urlParams string, baseline string) {
     </item>
     
     <item>
-      <title>Simply Said - Reducing Your Age</title>
-      <link>/post/becoming-younger/</link>
-      <pubDate>Fri, 07 Apr 2017 13:50:46 +0200</pubDate>
-      
-      <guid>/post/becoming-younger/</guid>
-      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
-
-&lt;p&gt;Death is a mystery. It is a scary darkness that is almost impossible to fanthom. If life is like a game, some people think that you would respawn in a different place, some people think that you replay the good bits of life in your brain over again, some people think that you enter a different dimension.&lt;/p&gt;
-
-&lt;p&gt;
-&lt;/br&gt;
-
-&lt;div style=&#34;position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;&#34;&gt;
-  &lt;iframe src=&#34;//www.youtube.com/embed/gWIi6Pytde8&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%;&#34; allowfullscreen frameborder=&#34;0&#34;&gt;&lt;/iframe&gt;
- &lt;/div&gt;
-
-&lt;/br&gt;
-The question begins as logical thinker, is there a way to cheat death? How can we extend our life way beyond the natural lifespan apart from uploading our conscience into the net or making use of &lt;a href=&#34;http://www.nbcnews.com/tech/innovation/company-will-freeze-your-dead-body-200-000-n562551&#34;&gt;cryopreservation&lt;/a&gt;. One possible way we could do this is by reducing our biological age to ensure that our system is always up and running together with some tissue regeneration.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;High Intensity Interval Training (HIIT) 15mins/day - Strength/Resistance
-
-&lt;ul&gt;
-&lt;li&gt;This will not only help to improve your fitness levels but help you to feel energetic through the day!&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Sleep 7-8 Hours a day
-
-&lt;ul&gt;
-&lt;li&gt;Sleep Deprivation can cause your life span to shorten by miles. Read more about it &lt;a href=&#34;http://www.webmd.com/sleep-disorders/features/10-results-sleep-loss#1&#34;&gt;here&lt;/a&gt; Use the &lt;a href=&#34;http://sleepcalculator.com/&#34;&gt;sleep calculator&lt;/a&gt; to help plan your sleep better&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;/post/losing-weight/&#34;&gt;Limit Toxins&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.pocketmindfulness.com/6-mindfulness-exercises-you-can-try-today/&#34;&gt;Healthy Mind - Meditation &amp;amp; Yoga&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Social Connection&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Always remember that to live a long life is to lead a life with a healthy mind and body. You can begin to see results in 2 weeks just by removing toxins from your body and building a healthy mind through mediation exercises. HIIT exercises with a restful sleep will work hand in hand to making you feel more positive in life and feeling younger, easing up the things that you were incapable of doing efficiently as before.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Simply Said - Deploying Hugo On AWS</title>
-      <link>/post/deploy-blog/</link>
+      <title>Deploying Hugo On AWS</title>
+      <link>/2017/03/31/deploy-blog/</link>
       <pubDate>Fri, 31 Mar 2017 13:50:46 +0200</pubDate>
       
-      <guid>/post/deploy-blog/</guid>
+      <guid>/2017/03/31/deploy-blog/</guid>
       <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
 
 &lt;p&gt;Initially, I have been using Web Hosting Hub with wordpress installed with it to run my website. I got my domain name from OpenSRS. I am quite happy with their services and support. However, It has come to the point that I am clearly paying too much for just hosting a blog which stood at about 13 bucks a month.&lt;/p&gt;
@@ -770,59 +473,11 @@ TLD = Top Level Domain&lt;/p&gt;
     </item>
     
     <item>
-      <title>Simply Said - Weight Loss</title>
-      <link>/post/losing-weight/</link>
-      <pubDate>Fri, 24 Mar 2017 13:50:46 +0200</pubDate>
-      
-      <guid>/post/losing-weight/</guid>
-      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
-
-&lt;p&gt;Losing weight can be painfu and may seem impossible for some others. Even something as simple as counting calories can be exhausting. Been there, done that, backfired and ruined. I proceeded to explore betters ways to lose weight, below includes some of the measures that I have chanced upon that helps you to lose weight without losing your life and sense of self.&lt;/p&gt;
-
-&lt;p&gt;Losing weight does not mean that it is about going on a diet that causes you immense emotional pain. To help increase your metabolism, you can use 2 types of method, either by drinking honey cinnamon water or a ginger lemon tea.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;/images/cinnamon.jpg&#34; class=&#34;img-responsive center-block&#34; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;preparations-include&#34;&gt;Preparations include&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;1 tsp of Honey&lt;/li&gt;
-&lt;li&gt;1 tsp of Ceylon Cinnamon&lt;/li&gt;
-&lt;li&gt;250ml of Hot Water&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Stir well, allow it to rest for 10 minutes and proceed to drink in the morning just after you wake up.
-+ Ginger Lemon Tea&lt;br /&gt;
-&lt;img src=&#34;/images/ginger.jpg&#34; class=&#34;img-responsive center-block&#34; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;preparations-include-1&#34;&gt;Preparations include&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Simmer Ginger with Water for 30 minutes&lt;/li&gt;
-&lt;li&gt;Add Lemon Slices
-Stir well, simmer for 20 minutes and proceed to drink after
-You can read more about the benefits of honey, the differences between Cassia &amp;amp; Ceylon Cinnamon by clicking on the keywords.&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;All these will aid you in increasing your metabolism to allow fats to be burn faster and easier. To further increase your weight loss process and helping to keep your body in a better condition, proceed to lift weights/ perform resistance training up to 3 times/ week. Training should only can be done as between 15-45 minutes. Refer to &lt;a href=&#34;http://darebee.com/&#34;&gt;Darebee&lt;/a&gt; for training programmes in which you can follow especially the workout cards.
-&lt;/br&gt;
-&lt;/br&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;disclaimer&#34;&gt;Disclaimer&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Use raw organic honey with no sugars.&lt;/li&gt;
-&lt;li&gt;For every 1 cup of water : (1 Tbsp of Honey, &lt;sup&gt;1&lt;/sup&gt;&amp;frasl;&lt;sub&gt;2&lt;/sub&gt; Tbsp of Ceylon Cinnamon)&lt;/li&gt;
-&lt;li&gt;Keep carbohydrates and sugar intake to a minimum level. &lt;strong&gt;Note: Minimum not None&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    
-    <item>
-      <title>Simply Said - Types of Developers</title>
-      <link>/post/developer-stack/</link>
+      <title>Types of Developers</title>
+      <link>/2017/03/17/developer-stack/</link>
       <pubDate>Fri, 17 Mar 2017 13:50:46 +0200</pubDate>
       
-      <guid>/post/developer-stack/</guid>
+      <guid>/2017/03/17/developer-stack/</guid>
       <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
 
 &lt;p&gt;Congratulations to taking your first step into the world of development. When you hear the word &amp;ldquo;programmer&amp;rdquo;, what first comes to your mind? Are there different type of programmers? If they are, what kind of programmers are they?&lt;/p&gt;
