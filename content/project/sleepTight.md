@@ -16,6 +16,6 @@ Sleep better and wake up ready to seize the day! Stay tuned for more upcoming fe
 ★ Helps you find the optimal time to wake sleep!
 ★ Know when to sleep or wake up no matter how much time you have!
 
-## Installation
+## Installation (Latest)
 
 https://play.google.com/store/apps/details?id=com.gmail.richmondgoh.sleepTight
