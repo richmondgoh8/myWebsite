@@ -7,13 +7,13 @@
         <meta name="description" content="Building a Web Crawler from scratch using Golang">
         <meta name="HandheldFriendly" content="True">
         <meta name="MobileOptimized" content="320">
-        <meta name="generator" content="Hugo 0.19" />
+        <meta name="generator" content="Hugo 0.30.2" />
         <meta name="robots" content="index,follow">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta property="og:title" content="Building a Website Crawler">
 <meta property="og:description" content="Building a Web Crawler from scratch using Golang">
 <meta property="og:type" content="article">
-<meta property="og:url" content="/project/WebCrawler/">
+<meta property="og:url" content="/project/webcrawler/">
         <link rel="stylesheet" href="/dist/styles.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -118,14 +118,14 @@ ga('send', 'pageview');
 
 <pre><code>//crawl.go
 func main() {
-	flag.Parse()
+    flag.Parse()
 
-	args := flag.Args()
-	fmt.Println(args)
-	if len(args) &lt; 1 {
-		fmt.Println(&quot;Please specify start page&quot;)
-		os.Exit(1)
-	}
+    args := flag.Args()
+    fmt.Println(args)
+    if len(args) &lt; 1 {
+        fmt.Println(&quot;Please specify start page&quot;)
+        os.Exit(1)
+    }
 }
 </code></pre>
 
@@ -138,15 +138,15 @@ func main() {
 
 <pre><code>func retrieve(uri string) {
 
-	resp, err := http.Get(uri)
-	if err != nil {
-		panic(err)
-	}
-	defer resp.Body.Close()
+    resp, err := http.Get(uri)
+    if err != nil {
+        panic(err)
+    }
+    defer resp.Body.Close()
 
-	body, _ := ioutil.ReadAll(resp.Body)
-	fmt.Println(string(body))
-	}
+    body, _ := ioutil.ReadAll(resp.Body)
+    fmt.Println(string(body))
+    }
 }
 </code></pre>
 
@@ -167,23 +167,23 @@ for _, link := range links {
 <pre><code>func retrieve(uri string) {
 ...
     ...
-	for _, link := range links {
-		absolute := fixUrl(link, uri)
-		fmt.Println(absolute)
-	}
+    for _, link := range links {
+        absolute := fixUrl(link, uri)
+        fmt.Println(absolute)
+    }
 }
 
 func fixUrl(href, base string) string {
-	uri, err := url.Parse(href)
-	if err != nil {
-		return &quot;&quot;
-	}
-	baseUrl, err := url.Parse(base)
-	if err != nil {
-		return &quot;&quot;
-	}
-	uri = baseUrl.ResolveReference(uri)
-	return uri.String()
+    uri, err := url.Parse(href)
+    if err != nil {
+        return &quot;&quot;
+    }
+    baseUrl, err := url.Parse(base)
+    if err != nil {
+        return &quot;&quot;
+    }
+    uri = baseUrl.ResolveReference(uri)
+    return uri.String()
 }
 </code></pre>
 
@@ -214,35 +214,35 @@ for _, link := range links {
 <pre><code>visitedPage   = make(map[string]bool)
 
 if strings.Contains(absolute, baseURL) &amp;&amp; !visitedPage[absolute] {
-			checkWebStatus(absolute, uri)
-		}
+            checkWebStatus(absolute, uri)
+        }
 </code></pre>
 
 <p>We proceed to upgrade our retrieve.go in such a way that we throw the url into a queue and allows our crawler to go digging into the urls that it has found The method we are using is recursive.</p>
 
 <pre><code>//replacement of retrieve.go
 func enqueue(uri string) {
-	//fmt.Println(&quot;fetching&quot;, uri)
-	visitedPage[uri] = true
-	resp, err := http.Get(uri)
-	if err != nil {
-		return
-	}
-	defer resp.Body.Close()
-	links := collectlinks.All(resp.Body)
-	for _, link := range links {
-		absolute := fixUrl(link, uri)
-		if !strings.Contains(absolute, baseURL) &amp;&amp; !visitedLinks[absolute] {
-			visitedLinks[absolute] = true
-			checkWebStatus(absolute, uri)
-		}
-		if strings.Contains(absolute, baseURL) &amp;&amp; !visitedPage[absolute] {
-			UrlCrawlCount++
-			//fmt.Println(absolute)
-			checkWebStatus(absolute, uri)
-			enqueue(absolute)
-		}
-	}
+    //fmt.Println(&quot;fetching&quot;, uri)
+    visitedPage[uri] = true
+    resp, err := http.Get(uri)
+    if err != nil {
+        return
+    }
+    defer resp.Body.Close()
+    links := collectlinks.All(resp.Body)
+    for _, link := range links {
+        absolute := fixUrl(link, uri)
+        if !strings.Contains(absolute, baseURL) &amp;&amp; !visitedLinks[absolute] {
+            visitedLinks[absolute] = true
+            checkWebStatus(absolute, uri)
+        }
+        if strings.Contains(absolute, baseURL) &amp;&amp; !visitedPage[absolute] {
+            UrlCrawlCount++
+            //fmt.Println(absolute)
+            checkWebStatus(absolute, uri)
+            enqueue(absolute)
+        }
+    }
 }
 </code></pre>
 
@@ -252,100 +252,100 @@ func enqueue(uri string) {
 
 //Recurisve Web Crawling
 import (
-	&quot;flag&quot;
-	&quot;fmt&quot;
-	&quot;github.com/briandowns/spinner&quot;
-	&quot;github.com/jackdanger/collectlinks&quot;
-	&quot;net/http&quot;
-	&quot;net/url&quot;
-	&quot;os&quot;
-	&quot;strings&quot;
-	&quot;time&quot;
+    &quot;flag&quot;
+    &quot;fmt&quot;
+    &quot;github.com/briandowns/spinner&quot;
+    &quot;github.com/jackdanger/collectlinks&quot;
+    &quot;net/http&quot;
+    &quot;net/url&quot;
+    &quot;os&quot;
+    &quot;strings&quot;
+    &quot;time&quot;
 )
 
 var (
-	visitedPage   = make(map[string]bool)
-	visitedLinks  = make(map[string]bool)
-	BrokenPage    = make(map[string]string)
-	UrlCrawlCount = 0
-	Linkcount     = 0
-	brokenLinks   = 0
-	baseURL       = &quot;&quot;
+    visitedPage   = make(map[string]bool)
+    visitedLinks  = make(map[string]bool)
+    BrokenPage    = make(map[string]string)
+    UrlCrawlCount = 0
+    Linkcount     = 0
+    brokenLinks   = 0
+    baseURL       = &quot;&quot;
 )
 
 func main() {
-	flag.Parse()
-	args := flag.Args()
-	//fmt.Println(args)
-	if len(args) &lt; 1 {
-		fmt.Println(&quot;Please specify start page&quot;)
-		os.Exit(1)
-	}
-	baseURL = args[0]
+    flag.Parse()
+    args := flag.Args()
+    //fmt.Println(args)
+    if len(args) &lt; 1 {
+        fmt.Println(&quot;Please specify start page&quot;)
+        os.Exit(1)
+    }
+    baseURL = args[0]
 
-	s := spinner.New(spinner.CharSets[9], 100*time.Millisecond)
-	s.Prefix = fmt.Sprintf(&quot;crawling %s, please wait &quot;, baseURL)
-	s.Start()
-	enqueue(baseURL)
+    s := spinner.New(spinner.CharSets[9], 100*time.Millisecond)
+    s.Prefix = fmt.Sprintf(&quot;crawling %s, please wait &quot;, baseURL)
+    s.Start()
+    enqueue(baseURL)
 
-	tmpCount := 0
-	s.Stop()
-	fmt.Println(&quot;================================================================================================&quot;)
-	fmt.Println(&quot;================================================================================================&quot;)
-	fmt.Println(&quot;Broken Links:&quot;, brokenLinks, &quot;Ok Links:&quot;, Linkcount, &quot;Web Pages Crawled:&quot;, UrlCrawlCount)
-	for key, value := range BrokenPage {
-		tmpCount++
-		fmt.Println(fmt.Sprintf(&quot;[%v] \n broken  : %s \n source: %s&quot;, tmpCount, key, value))
-	}
+    tmpCount := 0
+    s.Stop()
+    fmt.Println(&quot;================================================================================================&quot;)
+    fmt.Println(&quot;================================================================================================&quot;)
+    fmt.Println(&quot;Broken Links:&quot;, brokenLinks, &quot;Ok Links:&quot;, Linkcount, &quot;Web Pages Crawled:&quot;, UrlCrawlCount)
+    for key, value := range BrokenPage {
+        tmpCount++
+        fmt.Println(fmt.Sprintf(&quot;[%v] \n broken  : %s \n source: %s&quot;, tmpCount, key, value))
+    }
 }
 
 // fixUrl converts all relative links to absolute links
 func fixUrl(href, base string) string {
-	uri, err := url.Parse(href)
-	if err != nil {
-		return &quot;&quot;
-	}
-	baseUrl, err := url.Parse(base)
-	if err != nil {
-		return &quot;&quot;
-	}
-	uri = baseUrl.ResolveReference(uri)
-	return uri.String()
+    uri, err := url.Parse(href)
+    if err != nil {
+        return &quot;&quot;
+    }
+    baseUrl, err := url.Parse(base)
+    if err != nil {
+        return &quot;&quot;
+    }
+    uri = baseUrl.ResolveReference(uri)
+    return uri.String()
 }
 
 func enqueue(uri string) {
-	//fmt.Println(&quot;fetching&quot;, uri)
-	visitedPage[uri] = true
-	resp, err := http.Get(uri)
-	if err != nil {
-		return
-	}
-	defer resp.Body.Close()
-	links := collectlinks.All(resp.Body)
-	for _, link := range links {
-		absolute := fixUrl(link, uri)
-		if !strings.Contains(absolute, baseURL) &amp;&amp; !visitedLinks[absolute] {
-			visitedLinks[absolute] = true
-			checkWebStatus(absolute, uri)
-		}
-		if strings.Contains(absolute, baseURL) &amp;&amp; !visitedPage[absolute] {
-			UrlCrawlCount++
-			//fmt.Println(absolute)
-			checkWebStatus(absolute, uri)
-			enqueue(absolute)
-		}
-	}
+    //fmt.Println(&quot;fetching&quot;, uri)
+    visitedPage[uri] = true
+    resp, err := http.Get(uri)
+    if err != nil {
+        return
+    }
+    defer resp.Body.Close()
+    links := collectlinks.All(resp.Body)
+    for _, link := range links {
+        absolute := fixUrl(link, uri)
+        if !strings.Contains(absolute, baseURL) &amp;&amp; !visitedLinks[absolute] {
+            visitedLinks[absolute] = true
+            checkWebStatus(absolute, uri)
+        }
+        if strings.Contains(absolute, baseURL) &amp;&amp; !visitedPage[absolute] {
+            UrlCrawlCount++
+            //fmt.Println(absolute)
+            checkWebStatus(absolute, uri)
+            enqueue(absolute)
+        }
+    }
 }
 
 // checkWebStatus checks all given links if they are invalid
 func checkWebStatus(urlParams string, baseline string) {
-	resp, _ := http.Get(urlParams)
-	if resp != nil &amp;&amp; resp.StatusCode == 200 {
-		Linkcount++
-	} else {
-		brokenLinks++
-		BrokenPage[urlParams] = baseline
-	}
+    resp, _ := http.Get(urlParams)
+    if resp != nil &amp;&amp; resp.StatusCode == 200 {
+        Linkcount++
+    } else {
+        brokenLinks++
+        BrokenPage[urlParams] = baseline
+    }
 }
 </code></pre>
 
@@ -365,7 +365,7 @@ func checkWebStatus(urlParams string, baseline string) {
 
     <div class="share">
         
-            <a class="icon-twitter" href="https://twitter.com/share?text=Building%20a%20Website%20Crawler&url=%2fproject%2fWebCrawler%2f"
+            <a class="icon-twitter" href="https://twitter.com/share?text=Building%20a%20Website%20Crawler&url=%2fproject%2fwebcrawler%2f"
                 onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
                 <i class="fa fa-twitter"></i>
                 <span class="hidden">Twitter</span>
@@ -373,7 +373,7 @@ func checkWebStatus(urlParams string, baseline string) {
         
 
         
-            <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=%2fproject%2fWebCrawler%2f"
+            <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=%2fproject%2fwebcrawler%2f"
                 onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
                 <i class="fa fa-facebook"></i>
                 <span class="hidden">Facebook</span>
@@ -381,7 +381,7 @@ func checkWebStatus(urlParams string, baseline string) {
         
 
         
-            <a class="icon-google-plus" href="https://plus.google.com/share?url=%2fproject%2fWebCrawler%2f"
+            <a class="icon-google-plus" href="https://plus.google.com/share?url=%2fproject%2fwebcrawler%2f"
               onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
               <i class="fa fa-google-plus"></i>
                 <span class="hidden">Google+</span>

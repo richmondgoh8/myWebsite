@@ -7,7 +7,7 @@
         <meta name="description" content="Your Guide to Building a Web Crawler from scratch using Golang">
         <meta name="HandheldFriendly" content="True">
         <meta name="MobileOptimized" content="320">
-        <meta name="generator" content="Hugo 0.19" />
+        <meta name="generator" content="Hugo 0.30.2" />
         <meta name="robots" content="index,follow">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta property="og:title" content="DevOps">
@@ -243,39 +243,39 @@ Ever developer knows that documentation is the key to everything and one of a ni
 
 <pre><code>// Sample Kube-Doc Custom
 func main() {
-	bucketName   := &quot;api-doc-build&quot;
-	repoName     := os.Getenv(&quot;REPO_NAME&quot;)
-	APIBfilePath := os.Getenv(&quot;APIB_FILE_PATH&quot;)
-	ctx          := context.Background()
+    bucketName   := &quot;api-doc-build&quot;
+    repoName     := os.Getenv(&quot;REPO_NAME&quot;)
+    APIBfilePath := os.Getenv(&quot;APIB_FILE_PATH&quot;)
+    ctx          := context.Background()
 
-	//Starts the client
-	client, err := storage.NewClient(ctx)
-	if err != nil {
-		log.WithError(err).Fatal(&quot;Authentication Error!&quot;)
-	}
+    //Starts the client
+    client, err := storage.NewClient(ctx)
+    if err != nil {
+        log.WithError(err).Fatal(&quot;Authentication Error!&quot;)
+    }
 
-	if repoName == &quot;&quot; {
-		log.Fatal(&quot;'REPO_NAME' is required&quot;)
-	}
-	object := fmt.Sprintf(&quot;%s/doc.apib&quot;, repoName)
+    if repoName == &quot;&quot; {
+        log.Fatal(&quot;'REPO_NAME' is required&quot;)
+    }
+    object := fmt.Sprintf(&quot;%s/doc.apib&quot;, repoName)
 
-	doc, err := os.Open(APIBfilePath)
-	if err != nil {
-		log.Fatal(&quot;APIB File does not exist&quot;)
-	}
-	defer doc.Close()
+    doc, err := os.Open(APIBfilePath)
+    if err != nil {
+        log.Fatal(&quot;APIB File does not exist&quot;)
+    }
+    defer doc.Close()
 
-	wc := client.Bucket(bucketName).Object(object).NewWriter(ctx)
-	if _, err := io.Copy(wc, doc); err != nil {
-		log.WithError(err).Fatal(&quot;Error Copying File&quot;)
-	}
-	if err := wc.Close(); err != nil {
-		log.WithError(err).Fatal(&quot;Error Closing Client&quot;)
-	}
-	// Close the client when finished.
-	if err := client.Close(); err != nil {
-		log.WithError(err).Fatal(&quot;Error Closing Client&quot;)
-	}
+    wc := client.Bucket(bucketName).Object(object).NewWriter(ctx)
+    if _, err := io.Copy(wc, doc); err != nil {
+        log.WithError(err).Fatal(&quot;Error Copying File&quot;)
+    }
+    if err := wc.Close(); err != nil {
+        log.WithError(err).Fatal(&quot;Error Closing Client&quot;)
+    }
+    // Close the client when finished.
+    if err := client.Close(); err != nil {
+        log.WithError(err).Fatal(&quot;Error Closing Client&quot;)
+    }
 }
 </code></pre>
 
