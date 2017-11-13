@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/2017/11/11/love4corona/</loc>
+    <lastmod>2017-11-11T13:50:46+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/2017/05/05/hugoci/</loc>
     <lastmod>2017-05-05T13:50:46+02:00</lastmod>
   </url>
@@ -68,12 +73,48 @@
   </url>
   
   <url>
+    <loc>/tags/application/</loc>
+    <lastmod>2017-11-11T13:50:46+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/business/</loc>
+    <lastmod>2017-11-11T13:50:46+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/corona/</loc>
+    <lastmod>2017-11-11T13:50:46+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/engine/</loc>
+    <lastmod>2017-11-11T13:50:46+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/page/faq/</loc>
   </url>
   
   <url>
     <loc>/tags/fitness--health/</loc>
     <lastmod>2017-04-07T13:50:46+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/game/</loc>
+    <lastmod>2017-11-11T13:50:46+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/mobile/</loc>
+    <lastmod>2017-11-11T13:50:46+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -85,7 +126,7 @@
   
   <url>
     <loc>/post/</loc>
-    <lastmod>2017-05-05T13:50:46+02:00</lastmod>
+    <lastmod>2017-11-11T13:50:46+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -103,13 +144,13 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2017-05-05T13:50:46+02:00</lastmod>
+    <lastmod>2017-11-11T13:50:46+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/</loc>
-    <lastmod>2017-04-07T13:50:46+02:00</lastmod>
+    <lastmod>2017-11-11T13:50:46+02:00</lastmod>
     <priority>0</priority>
   </url>
   
