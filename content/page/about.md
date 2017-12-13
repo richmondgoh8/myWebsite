@@ -18,5 +18,5 @@ description = "Things about me."
 <p style="text-align: justify;" markdown="1">I have also tinkered with Corona SDK using Lua Language and built 3 Android Mobile Applications namely "Fit4Life", "SleepTight" and "Daily Dose"</p>
 </br>
 
-<p style="text-align: justify;" markdown="1">Beside all these, I write blogs, participate in hackathons, attend Meetups during my spare time. If you would be interested to work with me, feel free to either drop me an email via **richmondgoh@gmail.com**. I have also written game reviews and the analysis of them in-depth which you can view at [Published Papers](http://sp.academia.edu/RichmondGoh).</p>
+<p style="text-align: justify;" markdown="1">Beside all these, I write blogs, participate in hackathons, attend Meetups during my spare time. If you would be interested to work with me, feel free to either drop me an email via **richmondgoh@gmail.com**. I have also written game reviews and the analysis of them in-depth which you can view at [Published Papers](http://sp.academia.edu/RichmondGoh)..</p>
 </br>
