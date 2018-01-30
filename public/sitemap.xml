@@ -3,85 +3,38 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://localhost:1313/post/corona/love4corona/</loc>
-    <lastmod>2017-11-11T13:50:46+02:00</lastmod>
+    <loc>http://localhost:1313/links/</loc>
+    <lastmod>2014-04-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/dev-ops/hugoci/</loc>
-    <lastmod>2017-05-05T13:50:46+02:00</lastmod>
+    <loc>http://localhost:1313/about/</loc>
+    <lastmod>2014-04-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/dev-ops/devops/</loc>
-    <lastmod>2017-04-28T13:50:46+02:00</lastmod>
+    <loc>http://localhost:1313/post/creating-a-new-theme/</loc>
+    <lastmod>2014-09-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/project/webcrawler/</loc>
-    <lastmod>2017-04-21T13:50:46+02:00</lastmod>
+    <loc>http://localhost:1313/post/goisforlovers/</loc>
+    <lastmod>2014-07-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/dev-ops/china-deployment/</loc>
-    <lastmod>2017-04-14T13:50:46+02:00</lastmod>
+    <loc>http://localhost:1313/post/hugoisforlovers/</loc>
+    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/fitness--health/reducing-your-age/</loc>
-    <lastmod>2017-04-07T13:50:46+02:00</lastmod>
+    <loc>http://localhost:1313/post/migrate-from-jekyll/</loc>
+    <lastmod>2014-03-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/dev-ops/deploy-blog/</loc>
-    <lastmod>2017-03-31T13:50:46+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://localhost:1313/post/fitness--health/losing-weight/</loc>
-    <lastmod>2017-03-24T13:50:46+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://localhost:1313/post/dev-ops/developer-stack/</loc>
-    <lastmod>2017-03-17T13:50:46+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://localhost:1313/page/about/</loc>
-    <lastmod>2015-04-03T02:13:50+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://localhost:1313/page/contact/</loc>
-    <lastmod>2015-04-03T02:13:50+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://localhost:1313/project/dailydose/</loc>
-    <lastmod>2014-11-18T02:13:50+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://localhost:1313/project/fit4life/</loc>
-    <lastmod>2014-11-18T02:13:50+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://localhost:1313/project/sleeptight/</loc>
-    <lastmod>2014-11-18T02:13:50+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://localhost:1313/tags/application/</loc>
-    <lastmod>2017-11-11T13:50:46+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://localhost:1313/tags/business/</loc>
-    <lastmod>2017-11-11T13:50:46+02:00</lastmod>
-    <priority>0</priority>
+    <loc>http://localhost:1313/post/hugo-nuo-post-preview/</loc>
+    <lastmod>2013-07-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -90,78 +43,68 @@
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/corona/</loc>
-    <lastmod>2017-11-11T13:50:46+02:00</lastmod>
+    <loc>http://localhost:1313/tags/development/</loc>
+    <lastmod>2014-07-28T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/engine/</loc>
-    <lastmod>2017-11-11T13:50:46+02:00</lastmod>
+    <loc>http://localhost:1313/tags/go/</loc>
+    <lastmod>2014-07-28T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/page/faq/</loc>
-  </url>
-  
-  <url>
-    <loc>http://localhost:1313/tags/fitness--health/</loc>
-    <lastmod>2017-04-07T13:50:46+02:00</lastmod>
+    <loc>http://localhost:1313/tags/golang/</loc>
+    <lastmod>2014-07-28T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/game/</loc>
-    <lastmod>2017-11-11T13:50:46+02:00</lastmod>
+    <loc>http://localhost:1313/tags/hugo/</loc>
+    <lastmod>2014-09-28T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/tags/mobile/</loc>
-    <lastmod>2017-11-11T13:50:46+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://localhost:1313/page/</loc>
-    <lastmod>2015-04-03T02:13:50+00:00</lastmod>
+    <loc>http://localhost:1313/tags/markdown/</loc>
+    <lastmod>2013-07-17T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://localhost:1313/post/</loc>
-    <lastmod>2017-11-11T13:50:46+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://localhost:1313/project/</loc>
-    <lastmod>2017-04-21T13:50:46+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://localhost:1313/tags/projects/</loc>
-    <lastmod>2017-04-21T13:50:46+02:00</lastmod>
+    <lastmod>2014-09-28T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2017-11-11T13:50:46+02:00</lastmod>
+    <lastmod>2014-04-09T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://localhost:1313/tags/</loc>
-    <lastmod>2017-11-11T13:50:46+02:00</lastmod>
+    <lastmod>2014-07-28T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/tags/templates/</loc>
+    <lastmod>2014-07-28T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://localhost:1313/tags/theme/</loc>
-    <lastmod>2017-05-05T13:50:46+02:00</lastmod>
+    <lastmod>2014-09-28T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/tags/themes/</loc>
+    <lastmod>2014-07-28T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

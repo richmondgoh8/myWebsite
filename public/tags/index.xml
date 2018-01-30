@@ -7,89 +7,80 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you likes to quote or reproduce.</copyright>
-    <lastBuildDate>Sat, 11 Nov 2017 13:50:46 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 28 Jul 2014 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Application</title>
-      <link>http://localhost:1313/tags/application/</link>
-      <pubDate>Sat, 11 Nov 2017 13:50:46 +0200</pubDate>
+      <title>Development</title>
+      <link>http://localhost:1313/tags/development/</link>
+      <pubDate>Mon, 28 Jul 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/tags/application/</guid>
+      <guid>http://localhost:1313/tags/development/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Business</title>
-      <link>http://localhost:1313/tags/business/</link>
-      <pubDate>Sat, 11 Nov 2017 13:50:46 +0200</pubDate>
+      <title>Go</title>
+      <link>http://localhost:1313/tags/go/</link>
+      <pubDate>Mon, 28 Jul 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/tags/business/</guid>
+      <guid>http://localhost:1313/tags/go/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Corona</title>
-      <link>http://localhost:1313/tags/corona/</link>
-      <pubDate>Sat, 11 Nov 2017 13:50:46 +0200</pubDate>
+      <title>Golang</title>
+      <link>http://localhost:1313/tags/golang/</link>
+      <pubDate>Mon, 28 Jul 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/tags/corona/</guid>
+      <guid>http://localhost:1313/tags/golang/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Engine</title>
-      <link>http://localhost:1313/tags/engine/</link>
-      <pubDate>Sat, 11 Nov 2017 13:50:46 +0200</pubDate>
+      <title>Hugo</title>
+      <link>http://localhost:1313/tags/hugo/</link>
+      <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/tags/engine/</guid>
+      <guid>http://localhost:1313/tags/hugo/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Fitness  Health</title>
-      <link>http://localhost:1313/tags/fitness--health/</link>
-      <pubDate>Fri, 07 Apr 2017 13:50:46 +0200</pubDate>
+      <title>Markdown</title>
+      <link>http://localhost:1313/tags/markdown/</link>
+      <pubDate>Wed, 17 Jul 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/tags/fitness--health/</guid>
+      <guid>http://localhost:1313/tags/markdown/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Game</title>
-      <link>http://localhost:1313/tags/game/</link>
-      <pubDate>Sat, 11 Nov 2017 13:50:46 +0200</pubDate>
+      <title>Templates</title>
+      <link>http://localhost:1313/tags/templates/</link>
+      <pubDate>Mon, 28 Jul 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/tags/game/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Mobile</title>
-      <link>http://localhost:1313/tags/mobile/</link>
-      <pubDate>Sat, 11 Nov 2017 13:50:46 +0200</pubDate>
-      
-      <guid>http://localhost:1313/tags/mobile/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Projects</title>
-      <link>http://localhost:1313/tags/projects/</link>
-      <pubDate>Fri, 21 Apr 2017 13:50:46 +0200</pubDate>
-      
-      <guid>http://localhost:1313/tags/projects/</guid>
+      <guid>http://localhost:1313/tags/templates/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Theme</title>
       <link>http://localhost:1313/tags/theme/</link>
-      <pubDate>Fri, 05 May 2017 13:50:46 +0200</pubDate>
+      <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/tags/theme/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Themes</title>
+      <link>http://localhost:1313/tags/themes/</link>
+      <pubDate>Mon, 28 Jul 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/tags/themes/</guid>
       <description></description>
     </item>
     
