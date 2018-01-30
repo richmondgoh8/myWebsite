@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Pages on SinLucidious</title>
-    <link>/page/</link>
-    <description>Recent content in Pages on SinLucidious</description>
+    <title>Pages on Hugo Blog</title>
+    <link>http://localhost:1313/page/</link>
+    <description>Recent content in Pages on Hugo Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>Richmond Goh</copyright>
+    <language>en</language>
+    <copyright>© This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you likes to quote or reproduce.</copyright>
     <lastBuildDate>Fri, 03 Apr 2015 02:13:50 +0000</lastBuildDate>
     
-	<atom:link href="/page/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://localhost:1313/page/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>About</title>
-      <link>/page/about/</link>
+      <link>http://localhost:1313/page/about/</link>
       <pubDate>Fri, 03 Apr 2015 02:13:50 +0000</pubDate>
       
-      <guid>/page/about/</guid>
+      <guid>http://localhost:1313/page/about/</guid>
       <description>Below will showcase a bunch of links that you can click in order to view some of my works. I have tinkered about with Hugo, OpenVPN (Digital Ocean), Aliyun, AWS, Endpoint Creation, GRPC Clients, Server Programming, Netlify, ArangoDB NOSQL database, NSQ (Message Queue), ArangoDrivers, Gitlab, Twilio, Mailgun, Wordpress CMS, Email Templating. In my blog, I will be categorizing information between &amp;ldquo;Simply Said Series&amp;rdquo; and in-depth explanation. 
 In my experience with Unity 3d, I have developed a story based structure in which anyone can use to develop a story for their games.</description>
     </item>
     
     <item>
       <title>Contact</title>
-      <link>/page/contact/</link>
+      <link>http://localhost:1313/page/contact/</link>
       <pubDate>Fri, 03 Apr 2015 02:13:50 +0000</pubDate>
       
-      <guid>/page/contact/</guid>
+      <guid>http://localhost:1313/page/contact/</guid>
       <description>We are here to help you  Feel free to message me at richmondgoh@gmail.com should you be interested to work with me or require my assistance based on any of the skills that I possess. I am always looking to share business ideas and value with one another. Do not hesitate to message me should you wish to know anything more about me.
 
 You can also choose to contact me at my mobile number at 9273 2203 (SG).</description>
@@ -35,10 +35,10 @@ You can also choose to contact me at my mobile number at 9273 2203 (SG).</descri
     
     <item>
       <title>FAQ</title>
-      <link>/page/faq/</link>
+      <link>http://localhost:1313/page/faq/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/page/faq/</guid>
+      <guid>http://localhost:1313/page/faq/</guid>
       <description>I will seek to answer some of the questions that are commonly asked to me over here. If you have further questions or would like to get in touch with me, feel free to leave me an email via the contact form. 1. WHAT IS THIS BLOG ALL ABOUT? This blog will not just be about reducing your biological age, keep yourself healthy and will also aim to keep you in the loop about the technological world that we are currently exposed to.</description>
     </item>
     

@@ -1,50 +1,50 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Theme on SinLucidious</title>
-    <link>/tags/theme/</link>
-    <description>Recent content in Theme on SinLucidious</description>
+    <title>Theme on Hugo Blog</title>
+    <link>http://localhost:1313/tags/theme/</link>
+    <description>Recent content in Theme on Hugo Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>Richmond Goh</copyright>
+    <language>en</language>
+    <copyright>© This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you likes to quote or reproduce.</copyright>
     <lastBuildDate>Fri, 05 May 2017 13:50:46 +0200</lastBuildDate>
     
-	<atom:link href="/tags/theme/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://localhost:1313/tags/theme/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Hugo CI</title>
-      <link>/2017/05/05/hugoci/</link>
+      <link>http://localhost:1313/post/dev-ops/hugoci/</link>
       <pubDate>Fri, 05 May 2017 13:50:46 +0200</pubDate>
       
-      <guid>/2017/05/05/hugoci/</guid>
+      <guid>http://localhost:1313/post/dev-ops/hugoci/</guid>
       <description>Sneak Preview Today&amp;rsquo;s Topic will be all about Continuous Integration for Hugo Deployment! Click on the link to find out more but in a nutshell, it is a pretty neat tool for hosting a static website! The thing is that now that you are done creating your website with Hugo tool in localhost. You are ready to let it run public for the whole wide world to know! After browsing tutorials after tutorials and scanning through providers, i realized that hosting providers are definitely not the way to go and to keep cost low, I have decided to use Amazon S3 Storage.</description>
     </item>
     
     <item>
       <title>DevOps</title>
-      <link>/2017/04/28/devops/</link>
+      <link>http://localhost:1313/post/dev-ops/devops/</link>
       <pubDate>Fri, 28 Apr 2017 13:50:46 +0200</pubDate>
       
-      <guid>/2017/04/28/devops/</guid>
+      <guid>http://localhost:1313/post/dev-ops/devops/</guid>
       <description>Behold Automation at it&amp;rsquo;s Finest Today&amp;rsquo;s Topic will be all about Continous Integration! Let&amp;rsquo;s Imagine this scenario, right now you are done with creating an awesome service that is capable of crawling the whole wide web or doing an e-commerce store. The problem now is that, you have to generate your own api blueprints (documentation), you have to manually deploy it to the cloud, make use of kubenetes settings. What is there was a way to automate all this these.</description>
     </item>
     
     <item>
       <title>China Infrastructure Deployment</title>
-      <link>/2017/04/14/china-deployment/</link>
+      <link>http://localhost:1313/post/dev-ops/china-deployment/</link>
       <pubDate>Fri, 14 Apr 2017 13:50:46 +0200</pubDate>
       
-      <guid>/2017/04/14/china-deployment/</guid>
+      <guid>http://localhost:1313/post/dev-ops/china-deployment/</guid>
       <description>&lt;p&gt;In this blog, we will be exploring the way of deploying the current service infrasture that you have built locally to deploying it on a server in china via Alibaba Cloud aka Aliyun.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Deploying Hugo On AWS</title>
-      <link>/2017/03/31/deploy-blog/</link>
+      <link>http://localhost:1313/post/dev-ops/deploy-blog/</link>
       <pubDate>Fri, 31 Mar 2017 13:50:46 +0200</pubDate>
       
-      <guid>/2017/03/31/deploy-blog/</guid>
+      <guid>http://localhost:1313/post/dev-ops/deploy-blog/</guid>
       <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
 
 &lt;p&gt;Initially, I have been using Web Hosting Hub with wordpress installed with it to run my website. I got my domain name from OpenSRS. I am quite happy with their services and support. However, It has come to the point that I am clearly paying too much for just hosting a blog which stood at about 13 bucks a month.&lt;/p&gt;</description>
@@ -52,10 +52,10 @@
     
     <item>
       <title>Types of Developers</title>
-      <link>/2017/03/17/developer-stack/</link>
+      <link>http://localhost:1313/post/dev-ops/developer-stack/</link>
       <pubDate>Fri, 17 Mar 2017 13:50:46 +0200</pubDate>
       
-      <guid>/2017/03/17/developer-stack/</guid>
+      <guid>http://localhost:1313/post/dev-ops/developer-stack/</guid>
       <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
 
 &lt;p&gt;Congratulations to taking your first step into the world of development. When you hear the word &amp;ldquo;programmer&amp;rdquo;, what first comes to your mind? Are there different type of programmers? If they are, what kind of programmers are they?&lt;/p&gt;</description>

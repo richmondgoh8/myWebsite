@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>Deploying Hugo On AWS</title>
+
+  
+  
+
+
+
+
+
+  
+  <meta name="author" content="Richmond Goh" />
+  <meta name="description" content="Introduction Initially, I have been using Web Hosting Hub with wordpress installed with it to run my website. I got my domain name from OpenSRS. I am quite happy with their services and support. However, It has come to the point that I am clearly paying too much for just hosting a blog which stood at about 13 bucks a month.
+" />
+
+  
+  
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@twitter_username" />
+    <meta name="twitter:title" content="Deploying Hugo On AWS" />
+    <meta name="twitter:description" content="Introduction Initially, I have been using Web Hosting Hub with wordpress installed with it to run my website. I got my domain name from OpenSRS. I am quite happy with their services and support. However, It has come to the point that I am clearly paying too much for just hosting a blog which stood at about 13 bucks a month.
+" />
+    <meta name="twitter:image" content="http://localhost:1313/img/avatar.jpg" />
+  
+
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Deploying Hugo On AWS" />
+  <meta property="og:description" content="Introduction Initially, I have been using Web Hosting Hub with wordpress installed with it to run my website. I got my domain name from OpenSRS. I am quite happy with their services and support. However, It has come to the point that I am clearly paying too much for just hosting a blog which stood at about 13 bucks a month.
+" />
+  <meta property="og:url" content="http://localhost:1313/post/dev-ops/deploy-blog/" />
+  <meta property="og:image" content="http://localhost:1313/img/avatar.jpg" />
+
+
+
+
+<meta name="generator" content="Hugo 0.34" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/dev-ops/deploy-blog/" />
+<link rel="alternative" href="http://localhost:1313/index.xml" title="Hugo Blog" type="application/atom+xml" />
+
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="format-detection" content="telephone=no,email=no,adress=no" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+
+<meta name="robots" content="index,follow" />
+<meta name="referrer" content="origin-when-cross-origin" />
+<meta name="google-site-verification" content="_moDmnnBNVLBN1rzNxyGUGdPHE20YgbmrtzLIbxaWFc" />
+<meta name="msvalidate.01" content="22596E34341DD1D17D6022C44647E587" />
+
+
+
+
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="Hugo Blog" />
+<meta name="msapplication-tooltip" content="Hugo Blog" />
+<meta name='msapplication-navbutton-color' content="#5fbf5e" />
+<meta name="msapplication-TileColor" content="#5fbf5e" />
+<meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
+<link rel="icon" href="http://localhost:1313/img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/img/favicon-32x32.png" />
+<link rel="icon" sizes="192x192" href="http://localhost:1313/img/touch-icon-android.png" />
+<link rel="apple-touch-icon" href="http://localhost:1313/img/touch-icon-apple.png" />
+<link rel="mask-icon" href="http://localhost:1313/img/safari-pinned-tab.svg" color="#5fbf5e" />
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
+
+<link rel="stylesheet" href="http://localhost:1313/css/bundle.css" />
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
+  <![endif]-->
+
+<!--[if lte IE 11]>
+    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+
+<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
+
+
+</head>
+  <body>
+    
+    <div class="suspension">
+      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
+      
+        
+        <a title="Go to comments" class="to-comment" href="#disqus_thread"><span class="icon icon-comment"></span></a>
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="http://localhost:1313/img/avatar.jpg" alt="Avatar">
+  
+  <h2 class="title">Hugo Blog</h2>
+  
+  <p class="subtitle">My Life Rants &amp; Insights</p>
+  <button class="menu-toggle" type="button">
+    <span class="icon icon-menu"></span>
+  </button>
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+            
+            
+            
+              is-active
+            ">
+            <a href="http://localhost:1313/">Home</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://github.com/laozhu">Works</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://localhost:1313/tags/">Tags</a>
+          </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list">
+
+      
+      <li class="social-item">
+        <a href="mailto:name@domain.com" title="Email"><span class="icon icon-email"></span></a>
+      </li>
+
+      
+      <li class="social-item">
+        <a href="//github.com/github_username" title="GitHub"><span class="icon icon-github"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="//twitter.com/twitter_username" title="Twitter"><span class="icon icon-twitter"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="//weibo.com/weibo_username" title="Weibo"><span class="icon icon-weibo"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="http://localhost:1313/img/qrcode.jpg" title="Wechat"><span class="icon icon-wechat"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="//www.linkedin.com/in/linkedin_username" title="Linkedin"><span class="icon icon-linkedin"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="http://localhost:1313/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+      </li>
+
+    </ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">Deploying Hugo On AWS</h1>
+      <p class="post-meta">@Richmond Goh · Mar 31, 2017 · 2 min read</p>
+    </header>
+    <article class="post-content"><h2 id="introduction">Introduction</h2>
+
+<p>Initially, I have been using Web Hosting Hub with wordpress installed with it to run my website. I got my domain name from OpenSRS. I am quite happy with their services and support. However, It has come to the point that I am clearly paying too much for just hosting a blog which stood at about 13 bucks a month.</p>
+
+<p>
+<p>This is where I chanced upon Amazon Web Services. Not being a good front-end developer, I went around in search of a template where I found Hugo, a static web builder developed with Golang. Below list the ways i went around trying to switch from web hosting hub to AWS. It was a rather fruitful experience as my overhead became less than 1 dollar a month.</p></p>
+
+<p>Feel free to view a step by step tutorial on deploying hugo with Amazon Web Services by <a href="http://bezdelev.com/post/hugo-aws-lambda-static-website/">Ilya Bezdelev</a>.</p>
+
+<p>In a nutshell, key points that you should note involves:</p>
+
+<ul>
+<li>Hugo website
+
+<ul>
+<li>Follow Hugo Tutorial on Creating Website <a href="https://gohugo.io/overview/quickstart/">here</a></li>
+</ul></li>
+<li>example.com bucket
+
+<ul>
+<li>serves the website content</li>
+</ul></li>
+<li>www.example.com bucket
+
+<ul>
+<li>redirects to example.com endpoint</li>
+</ul></li>
+
+<li><p>input.example.com bucket</p>
+
+<ul>
+<li>contains all hugo related files</li>
+</ul></li>
+
+<li><p>Default AWS Endpoint Domain Name</p>
+
+<ul>
+<li>Storage Buckets (used for containing Hugo files and serving web pages to visitors to site)</li>
+<li>Lambda ( piece of code that triggers downloading of static files from hugo input to output bucket)
+</br></li>
+</ul></li>
+
+<li><p>Custom Domain Name</p>
+
+<ul>
+<li>CloudFront Distribution (CDN)</li>
+<li>Route 53
+</br></li>
+</ul></li>
+
+<li><p>Security of AWS resources will be managed by Identity &amp; Access Management(IAM)</p></li>
+
+<li><p>AWS CloudFront consist of CDN which helps to speed up your website by</p></li>
+
+<li><p>Route 53 is used as a DNS Service as well as Domain Name Registration</p></li>
+</ul>
+
+<p>Amazon Route 53 is an authoritative Domain Name System (DNS) service. DNS is the system that translates human-readable domain names (example.com) into IP addresses (192.0.2.0). With authoritative name servers in data centers all over the world, Route 53 is reliable, scalable, and fast.
+TLD = Top Level Domain</p>
+
+<p>With all these in hand, Begin your journey to hosting your very own blog.</p>
+
+<p>Remember &ndash;&gt; Create Hugo Website &ndash;&gt; Create AWS Web Service &ndash;&gt; Create S3 to store Hugo Files &ndash;&gt; DNS with hosted zone to serve your example.com to the world.<br />
+</br></p>
+
+<p><em>Disclaimer: feel free to read up more about <a href="https://gohugo.io/overview/introduction/">Hugo</a> to find out about the other ways to host Hugo files. A free alternative would be netlify!</em>
+<em>PS - Web Hosting Hub Support is Excellent</em></p></article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="http://localhost:1313/tags/theme"><span class="tag">Theme</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        © This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you likes to quote or reproduce.This post was published <strong>305</strong> days ago, content in the post may be inaccurate, even wrong now, please take risk yourself.
+      </p>
+    </footer>
+    
+      <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "disqus_shortname" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      
+    
+  </section>
+  <footer class="site-footer">
+  <p>© 2017-2018 Hugo Blog</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
+  
+</footer>
+
+
+
+<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\[','\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+<script src="http://localhost:1313/js/bundle.js"></script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-52410912-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+  </body>
+</html>

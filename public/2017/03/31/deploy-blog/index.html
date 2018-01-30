@@ -8,7 +8,7 @@
         <meta name="description" content="Your Guide to deploying Hugo with AWS Services">
         <meta name="HandheldFriendly" content="True">
         <meta name="MobileOptimized" content="320">
-        <meta name="generator" content="Hugo 0.30.2" />
+        <meta name="generator" content="Hugo 0.16-DEV" />
         <meta name="robots" content="index,follow">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta property="og:title" content="Deploying Hugo On AWS">
@@ -26,7 +26,7 @@
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
 ga('create', 'UA-52410912-1', 'auto');
 ga('send', 'pageview');
@@ -91,31 +91,18 @@ ga('send', 'pageview');
 
 <div class="container">
     <article class="post-container" itemscope="" itemtype="http://schema.org/BlogPosting">
-        <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">Deploying Hugo On AWS</h1>
-    
-        <p class="post-description" itemprop="description">Your Guide to deploying Hugo with AWS Services</p>
-    
-    <p class="post-date">
-        <span>Published <time datetime="2017-03-31" itemprop="datePublished">Fri, Mar 31, 2017</time></span>
-        <span>by</span>
-        <span itemscope="" itemprop="author" itemtype="https://schema.org/Person">
-            <span itemprop="name">
-                <a href="http://rlc4u.com" itemprop="url" rel="author">Richmond Goh</a>
-            </span>
-        </span>
-    </p>
-</header>
+        
 
         <div class="post-content clearfix" itemprop="articleBody">
     
 
-    <h2 id="introduction">Introduction</h2>
+    
+
+<h2 id="introduction:0d32955f59fd6f5a89b50ad05ace433e">Introduction</h2>
 
 <p>Initially, I have been using Web Hosting Hub with wordpress installed with it to run my website. I got my domain name from OpenSRS. I am quite happy with their services and support. However, It has come to the point that I am clearly paying too much for just hosting a blog which stood at about 13 bucks a month.</p>
 
-<p>
-<p>This is where I chanced upon Amazon Web Services. Not being a good front-end developer, I went around in search of a template where I found Hugo, a static web builder developed with Golang. Below list the ways i went around trying to switch from web hosting hub to AWS. It was a rather fruitful experience as my overhead became less than 1 dollar a month.</p></p>
+<p>This is where I chanced upon Amazon Web Services. Not being a good front-end developer, I went around in search of a template where I found Hugo, a static web builder developed with Golang. Below list the ways i went around trying to switch from web hosting hub to AWS. It was a rather fruitful experience as my overhead became less than 1 dollar a month.</p>
 
 <p>Feel free to view a step by step tutorial on deploying hugo with Amazon Web Services by <a href="http://bezdelev.com/post/hugo-aws-lambda-static-website/">Ilya Bezdelev</a>.</p>
 
@@ -177,46 +164,10 @@ TLD = Top Level Domain</p>
 
 <p><em>Disclaimer: feel free to read up more about <a href="https://gohugo.io/overview/introduction/">Hugo</a> to find out about the other ways to host Hugo files. A free alternative would be netlify!</em>
 <em>PS - Web Hosting Hub Support is Excellent</em></p>
+
 </div>
 
-        <footer class="post-footer clearfix">
-    
-        <p class="post-tags">
-            <span>Tagged:</span>
-            
-            
-                <a href="/tags/theme/">theme</a>
-            
-        </p>
-    
-
-    <div class="share">
         
-            <a class="icon-twitter" href="https://twitter.com/share?text=Deploying%20Hugo%20On%20AWS&url=%2f2017%2f03%2f31%2fdeploy-blog%2f"
-                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
-                <i class="fa fa-twitter"></i>
-                <span class="hidden">Twitter</span>
-            </a>
-        
-
-        
-            <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=%2f2017%2f03%2f31%2fdeploy-blog%2f"
-                onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
-                <i class="fa fa-facebook"></i>
-                <span class="hidden">Facebook</span>
-            </a>
-        
-
-        
-            <a class="icon-google-plus" href="https://plus.google.com/share?url=%2f2017%2f03%2f31%2fdeploy-blog%2f"
-              onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
-              <i class="fa fa-google-plus"></i>
-                <span class="hidden">Google+</span>
-            </a>
-        
-        
-    </div>
-</footer>
 
         
     </article>

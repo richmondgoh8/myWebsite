@@ -1,55 +1,95 @@
-baseurl = "/"
+baseURL = "http://localhost:1313"
+languageCode = "en"
 title = "SinLucidious"
-theme = "ghostwriter"
-languageCode = "en-us"
-copyright = "Richmond Goh"
+theme = "hugo-nuo"
+enableRobotsTXT = true
+PygmentsCodeFences = true
+canonifyurls = true
+
+# Disqus Username
+disqusShortname = "disqus_shortname"
+
+# Google Analytics UA number
 googleAnalytics = "UA-52410912-1"
-disqusShortname = ""
 
-[Author]
-    name = "Richmond Goh"
-    profile = "http://rlc4u.com"
+# Copyright of your post
+copyright = "© This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you likes to quote or reproduce."
 
-[Taxonomies]
-    tag = "tags"
-
-[Params]
-    intro = true
-    headline = "SinLucidious Library"
-    description = "Your One Stop Guide to Advancing in Life"
-    github = "https://github.com/richmondgoh8"
-    gitlab = ""
-    linkedin = "https://linkedin.com/in/richmondgoh/"
-    gplus = ""
-    twitter = ""
-    stackoverflow = ""
-    email = "richmondgoh@gmail.com"
-    opengraph = true
-    shareTwitter = true
-    shareFacebook = true
-    shareGooglePlus = true
-    shareLinkedIn = false
-    dateFormat = "Mon, Jan 2, 2006"
-
-[Permalinks]
-    post = "/:year/:month/:day/:filename/"
+# Initial site menu, you can extend menu with content.
+[[menu.main]]
+  name = "Home"
+  weight = 10
+  identifier = "home"
+  url = "/"
 
 [[menu.main]]
-    name = "About"
-    url = "/page/about/"
-    weight = 2
+  name = "Works"
+  weight = 20
+  identifier = "works"
+  url = "https://github.com/richmondgoh8"
 
 [[menu.main]]
-    name = "Blog"
-    url = "/"
-    weight = 1
+  name = "Tags"
+  weight = 30
+  identifier = "tags"
+  url = "/tags/"
 
-[[menu.main]]
-    name = "Projects"
-    url = "/project/"
-    weight = 3
+# Add your own params here
+[params]
+  author = "Richmond Goh"
+  avatar = "/img/avatar.jpg"
+  seotitle = "Biohacker, Fitness, Financial Literacy, Business, Coventry University, PSB Academy, Internship, Brainstorming, Interesting Reads, Projects"
+  subtitle = "Biohacker, Technology Evangelist"
+  description = "Hugo is one of the most popular open-source static site generators. With its amazing speed and flexibility, Hugo makes building websites fun again."
+  paginate = 10
 
-[[menu.main]]
-    name = "Contact"
-    url = "/page/contact/"
-    weight = 4
+  # Choose your social networks
+  email = "richmondgoh@gmail.com"
+  github = "richmondgoh8"
+  linkedin = "richmondgoh"
+  # google = "googlplus_id_number"
+  # instagram = "instagram_username"
+  # youtube = "youtube_username"
+  # vimeo = "vimeo_username"
+  # medium = "medium_username"
+  # quora = "quora_username"
+  # pinterest = "pinterest_username"
+  # dribbble = "dribbble_username"
+  # behance = "behance_username"
+  # jsfiddle = "jsfiddle_username"
+  # codepen = "codepen_username"
+  # zhihu = "zhihu_username"
+  # douban = "douban_username"
+  # bilibili = "bilibili_id_number"
+
+  # Changyan Comments (China Only)
+  changyan = false
+  changyanId = "cyt3toRiB"
+  changyanConf = "prod_0908b1cb9a581501753cce1ed074dbe3"
+
+  # Google Webmaster
+  # https://www.google.com/webmasters/
+  googleSiteVerification = "_moDmnnBNVLBN1rzNxyGUGdPHE20YgbmrtzLIbxaWFc"
+
+  # Bing Webmaster
+  # https://www.bing.com/toolbox/webmaster/
+  msValidate = "22596E34341DD1D17D6022C44647E587"
+
+  # Baidu Webmaster (China Only)
+  # https://zhanzhang.baidu.com/
+  # baiduSiteVerification = "MZ23SPxxfa"
+
+  # Sogou Webmaster (China Only)
+  # http://zhanzhang.sogou.com/
+  # sogouSiteVerification = "m2jktMQTZm"
+
+  # 360 Webmaster (China Only)
+  # http://zhanzhang.so.com/
+  # soSiteVerification = "b7ab3b4c2edbc856642004d1b8c27a91"
+
+  # Baidu Tongji (China Only)
+  # https://tongji.baidu.com/
+  # baiduTongji = "e21dc1e8a592188271b615159dc88af7"
+
+  # ICP Number (China Only)
+  # ICP = "苏ICP备16005986号-2"
