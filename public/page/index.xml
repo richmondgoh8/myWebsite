@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pages on SinLucidious</title>
+    <link>/page/</link>
+    <description>Recent content in Pages on SinLucidious</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Richmond Goh</copyright>
+    <lastBuildDate>Fri, 03 Apr 2015 02:13:50 +0000</lastBuildDate>
+    <atom:link href="/page/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>About</title>
+      <link>/page/about/</link>
+      <pubDate>Fri, 03 Apr 2015 02:13:50 +0000</pubDate>
+      
+      <guid>/page/about/</guid>
+      <description>&lt;p&gt;&lt;/br&gt;
+&lt;h3 style=&#34;text-align: center;&#34; markdown=&#34;1&#34;&gt;Below will showcase a bunch of links that you can click in order to view some of my works. I have tinkered about with Hugo, OpenVPN (Digital Ocean), Aliyun, AWS, Endpoint Creation, GRPC Clients, Server Programming, Netlify, ArangoDB NOSQL database, NSQ (Message Queue), ArangoDrivers, Gitlab, Twilio, Mailgun, Wordpress CMS, Email Templating. In my blog, I will be categorizing information between &amp;ldquo;Simply Said Series&amp;rdquo; and in-depth explanation.&lt;/h3&gt;
+&lt;/br&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;p style=&#34;text-align: justify;&#34; markdown=&#34;1&#34;&gt;In my experience with Unity 3d, I have developed a story based structure in which anyone can use to develop a story for their games. It includes a template which anyone can grab and use it as a system. Feel free to grab the source code from my &lt;a href=&#34;https://github.com/richmondgoh8/AStoryAdventure&#34;&gt;Github Repo&lt;/a&gt;. You can also proceed to view a short story developed using my system via the itch.io. You can view my game at &lt;a href=&#34;https://richmondgoh8.itch.io/the-great-escape&#34;&gt;Unity Story Adventure&lt;/a&gt;.&lt;/p&gt;
+&lt;/br&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;p style=&#34;text-align: justify;&#34; markdown=&#34;1&#34;&gt;I have also created 2 games with my team using Zero Engine and they are namely swirl; a movement recording based game and demonice; a game where the player will try to balance his life on a very thin life. Feel free to view the source code at &lt;a href=&#34;https://github.com/richmondgoh8/Swirl_Zero_Demonice&#34;&gt;ZeroEngine - Demonice &amp;amp; Swirl&lt;/a&gt; or download the .exe file at &lt;a href=&#34;https://drive.google.com/drive/folders/0BzffX1_lPaINZFJJTS0tNzM1UTQ&#34;&gt;Google Drive&lt;/a&gt;&lt;/p&gt;
+&lt;/br&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;p style=&#34;text-align: justify;&#34; markdown=&#34;1&#34;&gt;I have also tinkered with Corona SDK using Lua Language and built 3 Android Mobile Applications namely &amp;ldquo;Fit4Life&amp;rdquo;, &amp;ldquo;SleepTight&amp;rdquo; and &amp;ldquo;Daily Dose&amp;rdquo;&lt;/p&gt;
+&lt;/br&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;p style=&#34;text-align: justify;&#34; markdown=&#34;1&#34;&gt;Beside all these, I write blogs, participate in hackathons, attend Meetups during my spare time. If you would be interested to work with me, feel free to either drop me an email via &lt;strong&gt;richmondgoh@gmail.com&lt;/strong&gt;. I have also written game reviews and the analysis of them in-depth which you can view at &lt;a href=&#34;http://sp.academia.edu/RichmondGoh&#34;&gt;Published Papers&lt;/a&gt;..&lt;/p&gt;
+&lt;/br&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Contact</title>
+      <link>/page/contact/</link>
+      <pubDate>Fri, 03 Apr 2015 02:13:50 +0000</pubDate>
+      
+      <guid>/page/contact/</guid>
+      <description>&lt;p&gt;&lt;h2 style=&#34;text-align: center;&#34; markdown=&#34;1&#34;&gt;We are here to help you&lt;/h2&gt;
+&lt;/br&gt;
+&lt;p style=&#34;text-align: justify;&#34; markdown=&#34;1&#34;&gt;Feel free to message me at &lt;strong&gt;richmondgoh@gmail.com&lt;/strong&gt; should you be interested to work with me or require my assistance based on any of the skills that I possess. I am always looking to share business ideas and value with one another. Do not hesitate to message me should you wish to know anything more about me.&lt;/p&gt;
+&lt;/br&gt;&lt;/p&gt;
+
+&lt;p style=&#34;text-align: center;&#34; markdown=&#34;1&#34;&gt;You can also choose to contact me at my mobile number at 9273 2203 (SG).  &lt;/p&gt;
+
+&lt;p&gt;&lt;/br&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;p style=&#34;text-align: center;&#34; markdown=&#34;1&#34;&gt;&lt;em&gt;On a side note - If you are in Singapore and living in the east and happen to be looking for a tennis sparring partner, feel free to contact me as well!&lt;/em&gt;&lt;/p&gt;
+&lt;/br&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>FAQ</title>
+      <link>/page/faq/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/page/faq/</guid>
+      <description>
+
+&lt;h5 id=&#34;i-will-seek-to-answer-some-of-the-questions-that-are-commonly-asked-to-me-over-here-if-you-have-further-questions-or-would-like-to-get-in-touch-with-me-feel-free-to-leave-me-an-email-via-the-contact-form:4a1318da06786ac52626178ca960109e&#34;&gt;I will seek to answer some of the questions that are commonly asked to me over here. If you have further questions or would like to get in touch with me, feel free to leave me an email via the contact form.&lt;/h5&gt;
+
+&lt;h3 id=&#34;1-what-is-this-blog-all-about:4a1318da06786ac52626178ca960109e&#34;&gt;1. WHAT IS THIS BLOG ALL ABOUT?&lt;/h3&gt;
+
+&lt;p&gt;This blog will not just be about reducing your biological age, keep yourself healthy and will also aim to keep you in the loop about the technological world that we are currently exposed to. I will host some of the projects that I have completed on github.com and will leave the links in the pages.&lt;/p&gt;
+
+&lt;h3 id=&#34;2-what-kind-of-technology-have-you-played-with:4a1318da06786ac52626178ca960109e&#34;&gt;2. WHAT KIND OF TECHNOLOGY HAVE YOU PLAYED WITH?&lt;/h3&gt;
+
+&lt;p&gt;Languages that I have tinkered with involves:
+* Golang
+* C#
+* Lua
+* Javascript, HTML, CSS
+* Python
+* Ruby&lt;/p&gt;
+
+&lt;h3 id=&#34;3-sdk-that-you-work-with:4a1318da06786ac52626178ca960109e&#34;&gt;3. SDK THAT YOU WORK WITH?&lt;/h3&gt;
+
+&lt;p&gt;So far, I have worked with Corona SDK, Unity 3D, Titanium, Zero Engine, Wordpress, Hugo&lt;/p&gt;
+
+&lt;h3 id=&#34;4-how-do-you-seek-to-attain-immortality-prolonged-life:4a1318da06786ac52626178ca960109e&#34;&gt;4. HOW DO YOU SEEK TO ATTAIN IMMORTALITY/ PROLONGED LIFE?&lt;/h3&gt;
+
+&lt;p&gt;I believed that we are judged not by our real age, but by our biological age. Having a biological age of 50 but a real age of 25 will still hamper you from living a long life. In my blog, I will proceed to share my journey to reducing my biological age, balancing your weight issues and having an active lifestyle. The tips shared with you will be doable with a hectic lifestyle.&lt;/p&gt;
+
+&lt;h3 id=&#34;5-how-are-your-content-managed:4a1318da06786ac52626178ca960109e&#34;&gt;5. HOW ARE YOUR CONTENT MANAGED&lt;/h3&gt;
+
+&lt;p&gt;I will categorize the content available in my blog with a #something in the title, you can search for the relevant subjects via the search function which is &amp;ldquo;ctrl f&amp;rdquo;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;The opinions expressed in this article are the author&amp;rsquo;s own and do not reflect the view of the National Institutes of Health, the Department of Health and Human Services, or the Singapore government.&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
