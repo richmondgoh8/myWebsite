@@ -1,0 +1,55 @@
+baseurl = "/"
+title = "SinLucidious - Biohacker & Technology Evangelist"
+theme = "ghostwriter"
+languageCode = "en-us"
+copyright = "Richmond Goh"
+googleAnalytics = "UA-52410912-1"
+disqusShortname = ""
+
+[Author]
+    name = "Richmond Goh"
+    profile = "http://rlc4u.com"
+
+[Taxonomies]
+    tag = "tags"
+
+[Params]
+    intro = true
+    headline = "SinLucidious - Biohacker & Technology Evangelist"
+    description = "Life Rant's Upside & Insight"
+    github = "https://github.com/richmondgoh8"
+    gitlab = ""
+    linkedin = "https://linkedin.com/in/richmondgoh/"
+    gplus = ""
+    twitter = ""
+    stackoverflow = ""
+    email = "richmondgoh@gmail.com"
+    opengraph = true
+    shareTwitter = true
+    shareFacebook = true
+    shareGooglePlus = true
+    shareLinkedIn = false
+    dateFormat = "Mon, Jan 2, 2006"
+
+[Permalinks]
+    post = "/:year/:month/:day/:filename/"
+
+[[menu.main]]
+    name = "About"
+    url = "/page/about/"
+    weight = 2
+
+[[menu.main]]
+    name = "Blog"
+    url = "/"
+    weight = 1
+
+[[menu.main]]
+    name = "Projects"
+    url = "/project/"
+    weight = 3
+
+[[menu.main]]
+    name = "Contact"
+    url = "/page/contact/"
+    weight = 4

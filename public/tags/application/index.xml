@@ -1,55 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Application on SinLucidious</title>
+    <title>Application on Hugo Blog</title>
     <link>/tags/application/</link>
-    <description>Recent content in Application on SinLucidious</description>
+    <description>Recent content in Application on Hugo Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>Richmond Goh</copyright>
+    <language>en</language>
+    <copyright>© This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you likes to quote or reproduce.</copyright>
     <lastBuildDate>Sat, 11 Nov 2017 13:50:46 +0200</lastBuildDate>
-    <atom:link href="/tags/application/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="/tags/application/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Why I Love Corona</title>
-      <link>/2017/11/11/love4corona/</link>
+      <link>/post/corona/love4corona/</link>
       <pubDate>Sat, 11 Nov 2017 13:50:46 +0200</pubDate>
       
-      <guid>/2017/11/11/love4corona/</guid>
-      <description>
-
-&lt;h2 id=&#34;sample-corona-projects:71df7115a83e93116fc98b1ddc3f2827&#34;&gt;Sample Corona Projects&lt;/h2&gt;
-
-&lt;p&gt;Before I begin, I thought I should start out by showing you some screenshots of the application that I have created! Namely: Sleep Tight and The Daily Dose.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;/images/Together.png&#34; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;what-do-i-use-corona-for:71df7115a83e93116fc98b1ddc3f2827&#34;&gt;What Do I Use Corona For?&lt;/h2&gt;
-
-&lt;p&gt;Currently, I primarily use Corona SDK for Business Mobile Application in which I publish onto the Google Play Store.&lt;/p&gt;
-
-&lt;h2 id=&#34;is-corona-worth-learning:71df7115a83e93116fc98b1ddc3f2827&#34;&gt;Is Corona Worth Learning?&lt;/h2&gt;
-
-&lt;p&gt;Currently Corona SDK is primarily used with Lua Programming Language which is easy to learn. It took me about 1 week to get used to the syntax and built a simple mobile application prototype. (I Only had about 1 year of C# Experience) at that time.&lt;/p&gt;
-
-&lt;h2 id=&#34;why-corona-is-good-for-business-app-development:71df7115a83e93116fc98b1ddc3f2827&#34;&gt;Why Corona is Good for Business App Development&lt;/h2&gt;
-
-&lt;p&gt;It is perfect for business application as they have no problem rendering everything required of a business app which ranges from buttons to table views. On top of that, it also has native libraries which speeds up the processes. It has one of the best &amp;ldquo;Real-Time&amp;rdquo; Simulator whereby it has instant feedback and look almost exactly as how it would look like on the device!&lt;/p&gt;
-
-&lt;h2 id=&#34;why-i-choose-to-develop-using-corona:71df7115a83e93116fc98b1ddc3f2827&#34;&gt;Why I Choose to develop using Corona&lt;/h2&gt;
-
-&lt;p&gt;I have been tinkering with Unity, Zero Engine, Titanium, Eclipse and Xamarin. All of them posed to be a challange to create a fully functional application due to the complexity of the documentation and programming language that follows with them. On top of them, None of their simulator could compare to that of Corona. The best part about Corona is the Code Exchange which is wonderful for newbie and veterans alike as it contains all sort of plugins, libraries and code snippet which could help you irregardless of your imagination.&lt;/p&gt;
-
-&lt;h2 id=&#34;corona-pricing:71df7115a83e93116fc98b1ddc3f2827&#34;&gt;Corona Pricing&lt;/h2&gt;
-
-&lt;p&gt;Did I mention? Corona is Free to publish and do not take any of your earning from the store. It is not limited to just Mobile Development but also to severe different other platforms such as Windows.&lt;/p&gt;
-
-&lt;h2 id=&#34;corona-services:71df7115a83e93116fc98b1ddc3f2827&#34;&gt;Corona Services&lt;/h2&gt;
-
-&lt;p&gt;Unlike other engines and services, Corona actually care, during a time where there was a Google Play Store Path Traversal and someone complained about it, It took them no longer than a few days to fix the issues! Applaud for them for catching and fixing bugs so quickly.&lt;/p&gt;
-
-&lt;p&gt;All in all, Corona is wonderful for developers of all levels to create application. You can also easily prototype something out with Corona for a presentation which is a ++ point. Thank you all for taking your time to read my post. Hope you all will give &lt;a href=&#34;https://coronalabs.com&#34;&gt;Corona&lt;/a&gt; a chance to change your life!&lt;/p&gt;
-</description>
+      <guid>/post/corona/love4corona/</guid>
+      <description>Sample Corona Projects Before I begin, I thought I should start out by showing you some screenshots of the application that I have created! Namely: Sleep Tight and The Daily Dose.
+What Do I Use Corona For? Currently, I primarily use Corona SDK for Business Mobile Application in which I publish onto the Google Play Store.
+Is Corona Worth Learning? Currently Corona SDK is primarily used with Lua Programming Language which is easy to learn.</description>
     </item>
     
   </channel>
