@@ -1,5 +1,5 @@
 +++
-title = "Why I Love Corona"
+title = "Why I Love Corona SDK"
 date = "2017-11-11T13:50:46+02:00"
 tags = ["Game","Engine","Corona","Business","Mobile","Application"]
 description = "How Corona has changed my way of life development and career"
