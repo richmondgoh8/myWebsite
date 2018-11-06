@@ -52,7 +52,7 @@ theme = "hugo-freelancer-theme"
 
         [params.about.button]
             text = "Download Resume"
-            link = "//www.dropbox.com/s/qr54s2xsuuezxgb/RichmondGoh_Resume.pdf?dl=0"
+            link = "//www.dropbox.com/s/q05tp64k0ih65hu/Resume_V3.pdf?dl=0"
             icon = "download"
 
 
