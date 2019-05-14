@@ -1,9 +1,11 @@
 +++
 title = "Simply Said - Weight Loss"
 date = "2017-03-24T13:50:46+02:00"
-tags = ["Fitness & Health"]
+categories = ["Fitness & Health"]
 description = "Your Guide to Losing Weight Permanently"
-keywords = ["Weight","Loss","Losing","Healthy","Honey","Detox"]
+keywords = ["Game","Engine","Corona","Business","Mobile","Application"]
+menu = "main"
+cover = "/images/pexel_small.jpg"
 +++
 
 [1]: http://darebee.com/

@@ -1,9 +1,11 @@
 +++
 title = "Fitness & Health - Reducing Your Age"
 date = "2017-04-07T13:50:46+02:00"
-tags = ["Fitness & Health"]
+categories = ["Fitness & Health"]
 description = "Your Guide to Feeling and Acting Young Again"
-keywords = ["Age","cryopreservation","Death"]
+keywords = ["Game","Engine","Corona","Business","Mobile","Application"]
+menu = "main"
+cover = "/images/pexel_small.jpg"
 +++
 
 [1]: http://www.nbcnews.com/tech/innovation/company-will-freeze-your-dead-body-200-000-n562551

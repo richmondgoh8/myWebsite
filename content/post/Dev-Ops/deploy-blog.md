@@ -1,9 +1,11 @@
 +++
 title = "Deploying Hugo On AWS"
 date = "2017-03-31T13:50:46+02:00"
-tags = ["theme"]
+categories = ["Development"]
 description = "Your Guide to deploying Hugo with AWS Services"
-keywords = ["Hugo","AWS","Deploying","Programming","Website","Static","Hosting"]
+keywords = ["Game","Engine","Corona","Business","Mobile","Application"]
+menu = "main"
+cover = "/images/pexel_small.jpg"
 +++
 
 [1]: http://bezdelev.com/post/hugo-aws-lambda-static-website/

@@ -1,10 +1,11 @@
 +++
 title = "Hugo CI"
 date = "2017-05-05T13:50:46+02:00"
-tags = ["theme"]
+categories = ["Development"]
 description = "Your Guide to Building a Web Crawler from scratch using Golang"
-keywords = ["Programming","Go","Hugo","Website","Blog"]
-draft = false
+keywords = ["Game","Engine","Corona","Business","Mobile","Application"]
+menu = "main"
+cover = "/images/pexel_small.jpg"
 +++
 
 [1]: https://gohugo.io/

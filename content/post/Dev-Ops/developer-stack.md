@@ -1,9 +1,11 @@
 +++
 title = "Types of Developers"
 date = "2017-03-17T13:50:46+02:00"
-tags = ["theme"]
+categories = ["Trivial"]
 description = "Your Guide to Understanding The World of Developers A Little More"
-keywords = ["Developer","Coding","Programming","Game","UI","Web","Application"]
+keywords = ["Game","Engine","Corona","Business","Mobile","Application"]
+menu = "main"
+cover = "/images/pexel_small.jpg"
 +++
 
 [1]: http://www.theodinproject.com/courses/introduction-to-web-development/lessons/what-a-web-developer-does

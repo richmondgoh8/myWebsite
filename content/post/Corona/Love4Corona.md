@@ -1,9 +1,12 @@
 +++
 title = "Why I Love Corona SDK"
 date = "2017-11-11T13:50:46+02:00"
-tags = ["Game","Engine","Corona","Business","Mobile","Application"]
+#tags = ["Game"]
+categories = ["Development"]
 description = "How Corona has changed my way of life development and career"
 keywords = ["Game","Engine","Corona","Business","Mobile","Application"]
+menu = "main"
+cover = "/images/pexel_small.jpg"
 +++
 
 [1]: https://coronalabs.com

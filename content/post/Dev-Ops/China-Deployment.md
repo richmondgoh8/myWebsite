@@ -1,10 +1,11 @@
 +++
 title = "China Infrastructure Deployment"
 date = "2017-04-14T13:50:46+02:00"
-tags = ["theme"]
-description = "Your Guide to Losing Weight Permanently"
-keywords = ["Deploy","Infrastructure","China","Aliyun","CS","Terminal","Docker","Docker-Compose","Services"]
-draft = false
+categories = ["Development"]
+description = "How Corona has changed my way of life development and career"
+keywords = ["Game","Engine","Corona","Business","Mobile","Application"]
+menu = "main"
+cover = "/images/pexel_small.jpg"
 +++
 
 [1]: https://docs.docker.com/engine/getstarted/step_four/

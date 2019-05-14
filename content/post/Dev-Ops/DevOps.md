@@ -1,10 +1,11 @@
 +++
 title = "DevOps"
 date = "2017-04-28T13:50:46+02:00"
-tags = ["theme"]
+categories = ["Development"]
 description = "Your Guide to Building a Web Crawler from scratch using Golang"
-keywords = ["Programming","Go","Golang","Web","Crawler","web-crawler","recursive"]
-draft = false
+keywords = ["Game","Engine","Corona","Business","Mobile","Application"]
+menu = "main"
+cover = "/images/pexel_small.jpg"
 +++
 
 [1]: https://apiblueprint.org/

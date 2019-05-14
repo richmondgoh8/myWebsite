@@ -1,107 +1,31 @@
-# Site settings
-baseurl = "/"
-languageCode = "en-us"
-title = "SinLucidious Portfolio"
-theme = "hugo-freelancer-theme"
+baseurl = "https://www.rlc4u.com/"
+languageCode = "en"
+defaultContentLanguage = "en"
+title = "SinLucidious"
+theme = "dream"
 
+# copyright = ""
+
+googleAnalytics = "UA-73611419-1"
+#disqusShortname = "SinLucidious"
+favicon = "/favicon.ico"
+enableRobotsTXT = true
 
 [params]
+  author = "Richmond Goh"
+  motto = "when the few becomes the many"
+  # description = ""
+  avatar = "/myavatar.png"
+  
+  email = "richmondgoh@gmail.com"
+  github = "richmondgoh8"
+  linkedin = "richmondgoh/?originalSubdomain=sg"
+  # codepen = ""
+  # stackoverflow = ""
 
-    # You can use Markdown syntax for urls [text](//url.to/source) for
-    # most longer texts.
+  siteStartYear = 2015
+  aboutHeader = "AboutMe"
 
-    name = "Richmond Goh"
-    description = "Richmond Goh, Portfolio, Hugo"
+  # No of Post per page
+  paginate = 4
 
-    email = "richmondgoh@gmail.com"
-
-    # Custom assets
-    custom_css = []
-    custom_js  = []
-
-    [params.navigation]
-        brand = "Richmond Goh's Portfolio"
-
-
-    [params.header]
-        # Copy your own image into './static/img/'' if you wish
-        image = "myavatar.png"
-        name = "Richmond Goh"
-        subtitle = "Blogger - Programmer - Fitness Enthusiast - Gamer"
-
-
-    [params.portfolio]
-        # All projects defined in their own files. You can find example projects
-        # at 'exampleSite/data/projects'. Copy the 'projects' folder into the 'data' directory
-        # at the root of this Hugo site.
-        # For more informtion take a look at the README.
-        title = "Portfolio"
-
-        [params.portfolio.modal]
-            client = "Client"
-            date = "Date"
-            category = "Category"
-            buttontext = "Close"
-
-
-    [params.about]
-        title = "About"
-        # The about text is splitted into a left and right column
-        left = "Richmond Goh is a avid gamer who dabbles his free time in fitness, blogging and tinkering with new technology."
-        right = "Blogger@[Medium](//medium.com/@richmondgoh), Writer@[Academia](http://sp.academia.edu/RichmondGoh)"
-
-        [params.about.button]
-            text = "Download Resume"
-            link = "//www.dropbox.com/s/q05tp64k0ih65hu/Resume_V3.pdf?dl=0"
-            icon = "download"
-
-
-    [params.contact]
-        title = "Contact"
-
-        # 'error' defines error messages for invalid inputs
-        [params.contact.form.name]
-            text = "Name"
-            error = "Please enter your name."
-
-        [params.contact.form.email]
-            text = "Email Address"
-            error = "Please enter your email address."
-
-        [params.contact.form.phone]
-            text = "Phone Number"
-            error = "Please enter your phone number."
-
-        [params.contact.form.message]
-            text = "Message"
-            error = "Please enter a message."
-
-        [params.contact.form.button]
-            text = "Send"
-
-
-    [params.footer]
-        copyright = "Published under the Apache License 2.0. Powered by [Hugo](//gohugo.io)."
-
-        [params.footer.location]
-            title = "Location"
-            # Postal address (add as many lines as necessary)
-            address = ["68 Lengkong Tiga", "S 417472"]
-
-        [params.footer.social]
-            title = "Around the web"
-            # All icons using Fontawesome's icon font. Look at fortawesome.github.io/Font-Awesome/icons/
-            # for more icons. The icons are represented by their corresponding
-            # CSS class.
-            [[params.footer.social.networks]]
-                icon = "fa-github"
-                link = "//bitbucket.org/richmondgoh8"
-
-            [[params.footer.social.networks]]
-                icon = "fa-linkedin"
-                link=  "//www.linkedin.com/in/richmondgoh/?originalSubdomain=sg"
-
-
-        [params.footer.credits]
-            title = "About Freelancer"
-text = "Freelance is a free to use, open source Bootstrap theme created by [Start Bootstrap](//startbootstrap.com)."
