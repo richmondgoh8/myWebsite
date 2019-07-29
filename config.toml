@@ -1,31 +1,64 @@
-baseurl = "https://www.rlc4u.com/"
-languageCode = "en"
-defaultContentLanguage = "en"
-title = "SinLucidious"
-theme = "dream"
+baseURL = "https://www.rlc4u.com/"
+languageCode = "en-us"
+title = "SinLucidious Story"
+theme = "LeaveIt"
 
-# copyright = ""
-
+paginate = 12
+enableEmoji = true
+enableRobotsTXT = true
 googleAnalytics = "UA-73611419-1"
+
+preserveTaxonomyNames = true
+
+[blackfriday]
+  hrefTargetBlank = true
+  nofollowLinks = true
+  noreferrerLinks = true
+
+[Permalinks]
+ posts = "/:year/:filename/"
+
+[menu]
+  [[menu.main]]
+    name = "Pick Your Poison"
+    url = "/categories/"
+    weight = 1
+
+  [[menu.main]]
+    name = "Blog"
+    url = "/posts/"
+    weight = 2
+
+  [[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 3
+
+[params]
+    since = 2015
+    author = "Richmond Goh"                            # Author's name
+    avatar = "/myavatar.png"           				   # Author's avatar
+    subtitle = "when the few becomes the many"         # Subtitle
+    cdn_url = ""           # Base CDN URL
+    home_mode = "" # post or other
+
+    google_verification = ""
+   
+    description = "Blog about Financial Independence, Fitness Relief and Programming Hacks" # site description
+    keywords = "Finance, Crypto, Programming, Fitness, Health" # site keywords
+
+    beian = ""
+    baiduAnalytics = ""
+
+    #license= '本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 #国际许可协议</a>进行许可'
+
+[params.social]
+    GitHub = "richmondgoh8"
+    Email   = "richmondgoh@gmail.com"
+    Medium = "@richmondgoh"
+    Linkedin = "richmondgoh/?originalSubdomain=sg"
+
 #disqusShortname = "SinLucidious"
 favicon = "/favicon.ico"
 enableRobotsTXT = true
-
-[params]
-  author = "Richmond Goh"
-  motto = "when the few becomes the many"
-  # description = ""
-  avatar = "/myavatar.png"
-  
-  email = "richmondgoh@gmail.com"
-  github = "richmondgoh8"
-  linkedin = "richmondgoh/?originalSubdomain=sg"
-  # codepen = ""
-  # stackoverflow = ""
-
-  siteStartYear = 2015
-  aboutHeader = "AboutMe"
-
-  # No of Post per page
-  paginate = 4
 
